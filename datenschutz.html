@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Datenschutzerklärung der Bewise GbR – Erfahren Sie, wie wir Ihre personenbezogenen Daten schützen und verarbeiten." />
+  <meta name="robots" content="noindex, follow" />
+  <title>Datenschutz | Bewise – Recruiting & HR</title>
+
+  <!-- Google Fonts: Cormorant Garamond (Display) + DM Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─────────────────────────────────────────────────────
+       CSS CUSTOM PROPERTIES (Identisch mit index.html & impressum.html)
+    ───────────────────────────────────────────────────── */
+    :root {
+      --white:       #FAFAF8;
+      --black:       #0E0E0C;
+      --cream:       #E8DFD0;
+      --cream-dark:  #C9B99A;
+      --cream-light: #F3EDE4;
+      --grey-light:  #F0EDE8;
+      --grey-mid:    #C8C4BC;
+      --grey-text:   #7A7670;
+      --glass-bg:    rgba(250, 250, 248, 0.72);
+      --glass-border:rgba(232, 223, 208, 0.45);
+      --shadow-soft: 0 8px 40px rgba(14,14,12,0.08);
+      --shadow-card: 0 2px 24px rgba(14,14,12,0.07);
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --radius-sm:  6px;
+      --radius-md:  14px;
+      --radius-lg:  24px;
+      --radius-xl:  40px;
+
+      --transition: 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-fast: 0.2s ease;
+    }
+
+    /* ─────────────────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ─────────────────────────────────────────────────────
+       TYPOGRAPHY HELPERS
+    ───────────────────────────────────────────────────── */
+    .label {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream-dark);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    .page-title em {
+      font-style: italic;
+      color: var(--cream-dark);
+    }
+
+    /* ─────────────────────────────────────────────────────
+       NAVIGATION (Kompakt für Unterseite)
+    ───────────────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 18px 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-mark {
+      width: 38px;
+      height: 38px;
+      background: var(--cream);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--black);
+    }
+    .nav-logo-text span {
+      font-weight: 300;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    .btn-back {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 10px 24px;
+      border-radius: var(--radius-xl);
+      background: var(--black);
+      color: var(--white);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-back:hover {
+      background: #2a2a28;
+      transform: translateY(-1px);
+    }
+
+    /* ─────────────────────────────────────────────────────
+       MAIN CONTENT AREA
+    ───────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      padding: 160px 6vw 100px;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .legal-section {
+      margin-bottom: 48px;
+    }
+
+    .legal-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--grey-mid);
+      padding-bottom: 8px;
+    }
+
+    .legal-section h3 {
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--black);
+      margin: 24px 0 12px;
+    }
+
+    .legal-section p, .legal-section ul {
+      font-size: 0.95rem;
+      color: var(--grey-text);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .legal-section ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    .legal-section li {
+      margin-bottom: 8px;
+    }
+
+    .legal-section address {
+      font-size: 0.95rem;
+      color: var(--grey-text);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      font-style: normal;
+    }
+
+    .legal-section address strong {
+      color: var(--black);
+    }
+
+    .legal-section a {
+      color: var(--black);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+      transition: color var(--transition-fast);
+    }
+    .legal-section a:hover {
+      color: var(--cream-dark);
+    }
+
+    .highlight-box {
+      background: var(--grey-light);
+      border-left: 3px solid var(--cream-dark);
+      padding: 20px;
+      border-radius: var(--radius-sm);
+      margin: 20px 0;
+    }
+
+    .highlight-box p {
+      margin-bottom: 0;
+      color: var(--black);
+    }
+
+    /* ─────────────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────────────── */
+    footer {
+      background: var(--black);
+      padding: 40px 6vw;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(250, 250, 248, 0.28);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 0.78rem;
+      color: rgba(250, 250, 248, 0.35);
+      transition: color var(--transition-fast);
+    }
+    .footer-links a:hover {
+      color: rgba(250, 250, 248, 0.7);
+    }
+
+    /* ─────────────────────────────────────────────────────
+       RESPONSIVE ADJUSTMENTS
+    ───────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      main {
+        padding: 130px 6vw 70px;
+      }
+      .page-title {
+        font-size: 2.5rem;
+      }
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav id="navbar" aria-label="Sekundäre Navigation">
+      <a href="index.html" class="nav-logo" aria-label="Bewise Startseite">
+        <div class="nav-logo-mark" aria-hidden="true">B</div>
+        <span class="nav-logo-text">Bewise <span>| Recruiting & HR</span></span>
+      </a>
+      <a href="index.html" class="btn-back" aria-label="Zurück zur Startseite">
+        ← Zurück
+      </a>
+    </nav>
+  </header>
+
+  <!-- RECHTSSICHERE DATENSCHUTZERKLÄRUNG CONTENT -->
+  <main>
+    <span class="label">Rechtliche Angaben</span>
+    <h1 class="page-title">Datenschutzerklärung</h1>
+
+    <!-- 1. Allgemeine Hinweise -->
+    <section class="legal-section">
+      <h2>1. Datenschutz auf einen Blick</h2>
+      <h3>Allgemeine Hinweise</h3>
+      <p>
+        Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.
+      </p>
+      <h3>Datenerfassung auf dieser Website</h3>
+      <p>
+        <strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong><br />
+        Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur Verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen.
+      </p>
+      <p>
+        <strong>Wie erfassen wir Ihre Daten?</strong><br />
+        Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein kontaktformular eingeben oder die Sie uns im Rahmen einer Bewerbung übermitteln. Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.
+      </p>
+      <p>
+        <strong>Wofür nutzen wir Ihre Daten?</strong><br />
+        Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens oder zur Abwicklung von Bewerbungsprozessen verwendet werden.
+      </p>
+      <p>
+        <strong>Welche Rechte haben Sie bezüglich Ihrer Daten?</strong><br />
+        Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen. Zudem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.
+      </p>
+    </section>
+
+    <!-- 2. Verantwortliche Stelle -->
+    <section class="legal-section">
+      <h2>2. Allgemeine Hinweise und Pflichtinformationen</h2>
+      <h3>Hinweis zur verantwortlichen Stelle</h3>
+      <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+      <address>
+        <strong>Bewise GbR</strong><br />
+        Brunestr. 17<br />
+        58511 Lüdenscheid<br />
+        Deutschland
+      </address>
+      <p>
+        Telefon: <a href="tel:+4940123456789">+49 (0) 40 123 456 789</a><br />
+        E-Mail: <a href="mailto:info@bewise-recruiting.de">info@bewise-recruiting.de</a>
+      </p>
+      <p>
+        <em>Verantwortliche Stelle</em> ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
+      </p>
+
+      <h3>SSL- bzw. TLS-Verschlüsselung</h3>
+      <p>
+        Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile. Wenn die SSL- oder TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.
+      </p>
+
+      <h3>Speicherdauer</h3>
+      <p>
+        Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschbegehren geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, es sei denn, wir haben andere rechtlich zulässige Gründe für die Speicherung Ihrer personenbezogenen Daten (z. B. steuer- oder handelsrechtliche Aufbewahrungsfristen); im letztgenannten Fall erfolgt die Löschung nach Fortfall dieser Gründe.
+      </p>
+
+      <h3>Hinweis zur Datenweitergabe in die USA und sonstige Drittstaaten</h3>
+      <p>
+        Wir verwenden unter anderem Tools von Unternehmen mit Sitz in den USA oder anderen datenschutzrechtlich nicht sicheren Drittstaaten. Wenn diese Tools aktiv sind, können Ihre personenbezogene Daten in diese Drittstaaten übermittelt und dort verarbeitet werden. Wir weisen darauf hin, dass in diesen Ländern kein mit der EU vergleichbares Datenschutzniveau garantiert werden kann. Beispielsweise sind US-Unternehmen verpflichtet, personenbezogene Daten an Sicherheitsbehörden herauszugeben, ohne dass Sie als Betroffener hiergegen gerichtlich vorgehen können. Es kann daher nicht ausgeschlossen werden, dass US-Behörden (z. B. Geheimdienste) Ihre auf US-Servern befindlichen Daten zu Überwachungszwecken verarbeiten, auswerten und dauerhaft speichern. Wir haben auf diese Verarbeitungstätigkeiten keinen Einfluss.
+      </p>
+
+      <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
+      <p>
+        Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.
+      </p>
+
+      <h3>Widerspruchsrecht gegen die Datenerhebung in besonderen Fällen sowie gegen Direktwerbung (Art. 21 DSGVO)</h3>
+      <div class="highlight-box">
+        <p>
+          <strong>WENN DIE DATENVERARBEITUNG AUF GRUNDLAGE VON ART. 6 ABS. 1 LIT. E ODER F DSGVO ERFOLGT, HABEN SIE JEDERZEIT DAS RECHT, AUS GRÜNDEN, DIE SICH AUS IHRER BESONDEREN SITUATION ERGEBEN, GEGEN DIE VERARBEITUNG IHRER PERSONENBEZOGENEN DATEN WIDERSPRUCH EINZULEGEN; DIES GILT AUCH FÜR EIN AUF DIESE BESTIMMUNGEN GESTÜTZTES PROFILING. DIE JEWEILIGE RECHTSGRUNDLAGE, AUF DENEN EINE VERARBEITUNG BERUHT, ENTNEHMEN SIE DIESER DATENSCHUTZERKLÄRUNG. WENN SIE WIDERSPRUCH EINLEGEN, WERDEN WIR IHRE BETROFFENEN PERSONENBEZOGENEN DATEN NICHT MEHR VERARBEITEN, ES SEI DENN, WIR KÖNNEN ZWINGENDE SCHUTZWÜRDIGE GRÜNDE FÜR DIE VERARBEITUNG NACHWEISEN, DIE IHRE INTERESSEN, RECHTE UND FREIHEITEN ÜBERWIEGEN ODER DIE VERARBEITUNG DIENT DER GELTENDMACHUNG, AUSÜBUNG ODER VERTEIDIGUNG VON RECHTSANSPRÜCHEN (WIDERSPRUCH NACH ART. 21 ABS. 1 DSGVO).</strong>
+        </p>
+      </div>
+
+      <h3>Beschwerderecht bei der zuständigen Aufsichtsbehörde</h3>
+      <p>
+        Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu. Das Beschwerderecht besteht unbeschadet anderweitiger verwaltungsrechtlicher oder gerichtlicher Rechtsbehelfe.
+      </p>
+
+      <h3>Recht auf Datenübertragbarkeit</h3>
+      <p>
+        Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in Erfüllung eines Vertrags automatisiert verarbeiten, an sich oder an einen Dritten in einem gängigen, maschinenlesbaren Format aushändigen zu lassen. Sofern Sie die direkte Übertragung der Daten an einen anderen Verantwortlichen verlangen, erfolgt dies nur, soweit es technisch machbar ist.
+      </p>
+
+      <h3>Auskunft, Löschung und Berichtigung</h3>
+      <p>
+        Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.
+      </p>
+
+      <h3>Recht auf Einschränkung der Verarbeitung</h3>
+      <p>
+        Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Hierzu können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden. Das Recht auf Einschränkung der Verarbeitung besteht in folgenden Fällen:
+      </p>
+      <ul>
+        <li>Wenn Sie die Richtigkeit Ihrer bei uns gespeicherten personenbezogenen Daten bestreiten, benötigen wir in der Regel Zeit, um dies zu überprüfen. Für die Dauer der Prüfung haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li>
+        <li>Wenn die Verarbeitung Ihrer personenbezogenen Daten unrechtmäßig geschah/geschieht, können Sie statt der Löschung die Einschränkung der Datenverarbeitung verlangen.</li>
+        <li>Wenn wir Ihre personenbezogenen Daten nicht mehr benötigen, Sie sie jedoch zur Ausübung, Verteidigung oder Geltendmachung von Rechtsansprüchen benötigen, haben Sie das Recht, statt der Löschung die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li>
+        <li>Wenn Sie einen Widerspruch nach Art. 21 Abs. 1 DSGVO eingelegt haben, muss eine Abwägung zwischen Ihren und unseren Interessen vorgenommen werden. Solange noch nicht feststeht, wessen Interessen überwiegen, haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li>
+      </ul>
+    </section>
+
+    <!-- 3. Webhosting / IONOS -->
+    <section class="legal-section">
+      <h2>3. Hosting und Content Delivery Networks (CDN)</h2>
+      <h3>Webhosting durch IONOS</h3>
+      <p>
+        Wir hosten unsere Website bei der IONOS SE. Anbieter ist die:
+      </p>
+      <address>
+        <strong>IONOS SE</strong><br />
+        Elgendorfer Str. 57<br />
+        56410 Montabaur<br />
+        Deutschland
+      </address>
+      <p>
+        Wenn Sie unsere Website besuchen, erfasst IONOS verschiedene Logfiles inklusive Ihrer IP-Adressen. Die Speicherung und Verarbeitung der Daten erfolgt auf hochsicheren Servern in Deutschland bzw. innerhalb der Europäischen Union.
+      </p>
+      <p>
+        Details entnehmen Sie der Datenschutzerklärung von IONOS: <a href="https://www.ionos.de/terms-gtc/datenschutzerklaerung/" target="_blank" rel="noopener noreferrer">https://www.ionos.de/terms-gtc/datenschutzerklaerung/</a>.
+      </p>
+      <p>
+        <strong>Rechtsgrundlage:</strong><br />
+        Der Einsatz von IONOS erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen, schnellen und sicheren Darstellung unserer Website.
+      </p>
+      <p>
+        <strong>Auftragsverarbeitung (AVV):</strong><br />
+        Wir haben einen Vertrag über Auftragsverarbeitung (AVV) mit der IONOS SE geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass IONOS die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.
+      </p>
+    </section>
+
+    <!-- 4. Datenerfassung & Formulare -->
+    <section class="legal-section">
+      <h2>4. Datenerfassung auf dieser Website</h2>
+      <h3>Server-Log-Dateien</h3>
+      <p>
+        Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:
+      </p>
+      <ul>
+        <li>Browsertyp und Browserversion</li>
+        <li>Verwendetes Betriebssystem</li>
+        <li>Referrer URL (die zuvor besuchte Seite)</li>
+        <li>Hostname des zugreifenden Rechners</li>
+        <li>Uhrzeit der Serveranfrage</li>
+        <li>IP-Adresse</li>
+      </ul>
+      <p>
+        Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an der technisch fehlerfreien Darstellung und der Optimierung seiner Website – hierzu müssen die Server-Log-Files erfasst werden.
+      </p>
+
+      <h3>Kontaktformulare und Datenweiterleitung</h3>
+      <p>
+        Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten (Name, E-Mail-Adresse, Telefonnummer, Statusauswahl sowie Ihre Nachricht) zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns verarbeitet.
+      </p>
+      <p>
+        Zur technischen Verarbeitung und sicheren Weiterleitung von Formularanfragen nutzen wir spezialisierte Dienstleister:
+      </p>
+      
+      <h3>Static Forms</h3>
+      <p>
+        Für die technische Validierung und automatische Zustellung unseres primären Kontaktformulars nutzen wir den Dienst <strong>Static Forms</strong>.
+      </p>
+      <p>
+        <strong>Empfänger / Drittlandstransfer:</strong><br />
+        Static Forms verarbeitet die von Ihnen eingegebenen Formulardaten und leitet diese an unsere E-Mail-Postfächer weiter. Der Betrieb der Infrastruktur von Static Forms erfolgt auf gehosteten Servern der Cloud-Plattformen Amazon Web Services (AWS) sowie Vercel, vorzugsweise in den USA. Zum Schutz Ihrer Daten und zur rechtlichen Absicherung dieses Transfers wurden mit dem Betreiber EU-Standardvertragsklauseln (Standard Contractual Clauses - SCC) vereinbart, die das europäische Datenschutzniveau auch bei Verarbeitungen im Drittland zusichern.
+      </p>
+
+      <h3>Formspree</h3>
+      <p>
+        Zusätzlich oder als Redundanzlösung für E-Mail-Formulardaten kann das Backend-System <strong>Formspree</strong> (Anbieter: Formspree, Inc., 21750 Hardy Oak Blvd Ste 104, San Antonio, TX 78258, USA) zum Einsatz kommen.
+      </p>
+      <p>
+        <strong>Drittlandstransfer und Sicherheit:</strong><br />
+        Auch Formspree verarbeitet Ihre Daten auf Servern in den USA. Die Absicherung erfolgt analog über vertraglich vereinbarte Standardvertragsklauseln, um den Schutz Ihrer persönlichen Informationen gemäß den Vorgaben der DSGVO lückenlos zu gewährleisten.
+      </p>
+
+      <p>
+        <strong>Rechtsgrundlage der Formularverarbeitung:</strong><br />
+        Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), sofern diese explizit abgefragt wurde.
+      </p>
+      <p>
+        <strong>Speicherdauer:</strong><br />
+        Die von Ihnen eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere handels- und steuerrechtliche Aufbewahrungsfristen – bleiben unberührt.
+      </p>
+    </section>
+
+    <!-- 5. Bewerbermanagement / Zoho Recruit -->
+    <section class="legal-section">
+      <h2>5. Bewerbermanagement und Stellenanzeigen (Zoho Recruit)</h2>
+      <p>
+        Wir binden auf unserer Website die Stellenanzeigen und das Bewerbermanagement-Portal des Anbieters <strong>Zoho Recruit</strong> ein. Betreiber für Nutzer innerhalb der EU ist die:
+      </p>
+      <address>
+        <strong>Zoho Corporation B.V.</strong><br />
+        Beneluxlaan 4B<br />
+        3527 HS Utrecht<br />
+        Niederlande
+      </address>
+      <p>
+        Über dieses Tool können Sie unsere aktuellen Stellenangebote einsehen und sich direkt online auf ausgeschriebene Positionen bewerben.
+      </p>
+      <p>
+        <strong>Verarbeitete Daten:</strong><br />
+        Wenn Sie sich über das integrierte Zoho-Portal bewerben, werden alle von Ihnen im Formular angegebenen Daten und hochgeladenen Dokumente (z. B. Lebenslauf, Anschreiben, Zeugnisse, Gehaltsvorstellungen, Kontaktdaten) erfasst, verarbeitet und in der Datenbank von Zoho Recruit für uns gespeichert.
+      </p>
+      <p>
+        <strong>Rechtsgrundlage:</strong><br />
+        Die Datenverarbeitung dient der Begründung und Durchführung des Bewerbungsverfahrens und der Anbahnung eines Beschäftigungsverhältnisses bzw. im Rahmen der Personalvermittlung. Rechtsgrundlage in Deutschland ist Art. 6 Abs. 1 lit. b DSGVO i. V. m. § 26 BDSG (Datenverarbeitung für Beschäftigungszwecke) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem schnellen, unkomplizierten und effizienten Bewerbermanagement).
+      </p>
+      <p>
+        <strong>Auftragsverarbeitung und Datensicherheit:</strong><br />
+        Die Datenhaltung der Zoho Corporation B.V. für Kunden in der Europäischen Union erfolgt primär auf Servern innerhalb von europäischen Rechenzentren (z. B. in Irland und den Niederlanden). Dennoch lässt sich ein Zugriff der Muttergesellschaft (Zoho Corporation, USA/Indien) zu Wartungs- und Supportzwecken nicht gänzlich ausschließen. Wir haben mit der Zoho Corporation B.V. einen strengen Vertrag zur Auftragsverarbeitung (Data Processing Addendum) auf Basis der EU-Standardvertragsklauseln abgeschlossen, um das Datenschutzniveau jederzeit vertraglich zu garantieren.
+      </p>
+      <p>
+        <strong>Speicherdauer im Bewerbungsverfahren:</strong><br />
+        Im Falle einer Absage werden Ihre Bewerbungsunterlagen maximal 6 Monate nach Abschluss des Bewerbungsverfahrens gespeichert und anschließend datenschutzkonform gelöscht (zur Abwehr eventueller Ansprüche aus dem Allgemeinen Gleichbehandlungsgesetz - AGG). Sollten wir Ihre Daten für zukünftige Stellenangebote in unserem Talent-Pool speichern wollen, holen wir hierzu vorab Ihre explizite Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) ein.
+      </p>
+    </section>
+
+    <!-- 6. Plugins und Tools (Google Fonts) -->
+    <section class="legal-section">
+      <h2>6. Plugins und Tools</h2>
+      <h3>Google Web Fonts (dynamische Einbindung)</h3>
+      <p>
+        Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten sogenannte Web Fonts, die von Google bereitgestellt werden. Anbieter ist die:
+      </p>
+      <address>
+        <strong>Google Ireland Limited</strong><br />
+        Gordon House, Barrow Street<br />
+        Dublin 4<br />
+        Irland
+      </address>
+      <p>
+        Beim Aufruf einer Seite lädt Ihr Browser die benötigten Web Fonts in Ihren Browsercache, um Texte und Schriftarten korrekt anzuzeigen. Zu diesem Zweck muss der von Ihnen verwendete Browser Verbindung zu den Servern von Google aufbauen. Hierdurch erlangt Google Kenntnis darüber, dass über Ihre IP-Adresse diese Website aufgerufen wurde. Die Nutzung von Google Web Fonts erfolgt im Interesse einer einheitlichen und ansprechenden Darstellung unserer Online-Angebote.
+      </p>
+      <p>
+        <strong>Übermittlung in Drittstaaten:</strong><br />
+        Die Datenverarbeitung kann auch auf Servern der Muttergesellschaft Google LLC in den USA stattfinden. Google verfügt über eine Zertifizierung nach dem EU-US Data Privacy Framework, wodurch ein angemessenes Datenschutzniveau für diese Transfers festgestellt ist. 
+      </p>
+      <p>
+        <strong>Rechtsgrundlage:</strong><br />
+        Die Verarbeitung erfolgt auf Grundlage unserer berechtigten Interessen an einer grafisch konsistenten und performanten Darstellung unserer Website (Art. 6 Abs. 1 lit. f DSGVO). Sofern Sie über das auf unserer Seite eingesetzte Consent-Banner Ihre Einwilligung erteilt haben, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit für die Zukunft widerrufbar.
+      </p>
+      <p>
+        Wenn Ihr Browser Web Fonts nicht unterstützt, wird eine Standardschrift Ihres Computers genutzt. Weitere Informationen zu Google Web Fonts finden Sie unter <a href="https://developers.google.com/fonts/faq" target="_blank" rel="noopener noreferrer">https://developers.google.com/fonts/faq</a> und in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy?hl=de</a>.
+      </p>
+    </section>
+
+    <!-- 7. Cookies, Local Storage & Consent Management (TDDDG Compliance) -->
+    <section class="legal-section">
+      <h2>7. Cookies, Speichertechnologien und Consent-Management (TDDDG-Konformität)</h2>
+      <p>
+        Unsere Website verwendet Cookies und ähnliche Speichertechnologien (wie Local Storage oder Session Storage), um Daten auf Ihrem Endgerät zu hinterlegen oder auszulesen. Cookies sind kleine Textdateien, die auf Ihrem Endgerät keinen Schaden anrichten. Sie werden entweder temporär für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (persistente Cookies) auf Ihrem Endgerät gespeichert.
+      </p>
+      <p>
+        <strong>Rechtsgrundlagen nach dem TDDDG und der DSGVO:</strong><br />
+        Die rechtliche Struktur der Datenspeicherung auf Ihrem Endgerät richtet sich in Deutschland primär nach dem <strong>TDDDG (Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz)</strong>:
+      </p>
+      <ul>
+        <li><strong>Technisch notwendige Speicherungen (§ 25 Abs. 2 Nr. 2 TDDDG):</strong> Die Speicherung von Informationen auf Ihrem Endgerät (z. B. des Einwilligungsstatus in unserem Cookie `bewise_cookie_consent`) ist unbedingt erforderlich, um Ihnen den von Ihnen ausdrücklich gewünschten Telemediendienst zur Verfügung zu stellen. Eine Einwilligung ist hierfür gesetzlich nicht erforderlich. Die anschließende Verarbeitung dieser Daten durch uns erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer fehlerfreien Bereitstellung).</li>
+        <li><strong>Einwilligungspflichtige Speicherungen (§ 25 Abs. 1 TDDDG):</strong> Jede Speicherung von Cookies oder Daten für Analyse- und Marketingzwecke (z. B. zur Messung von Reichweiten) erfolgt ausschließlich auf Grundlage Ihrer ausdrücklichen, aktiven Einwilligung (Opt-In). Die darauf basierende Datenverarbeitung erfolgt nach Art. 6 Abs. 1 lit. a DSGVO.</li>
+      </ul>
+      <p>
+        <strong>Widerruf der Einwilligung:</strong><br />
+        Ihre erteilte Einwilligung können Sie jederzeit über den Link „Cookie-Einstellungen“ im Footer unserer Website für die Zukunft anpassen oder vollständig widerrufen.
+      </p>
+    </section>
+
+    <!-- 8. Social Media Auftritte (LinkedIn / Xing) -->
+    <section class="legal-section">
+      <h2>8. Social-Media-Präsenzen (LinkedIn und Xing)</h2>
+      <p>
+        Wir unterhalten Onlinepräsenzen innerhalb sozialer Netzwerke, um mit den dort aktiven Kandidaten, Kunden und Interessenten zu kommunizieren und sie über unsere Leistungen zu informieren. Wir verlinken auf unserer Webseite aktiv auf unsere Unternehmensseiten bei LinkedIn und Xing.
+      </p>
+      <p>
+        Sobald Sie unsere Profile auf den jeweiligen Plattformen aufrufen, werden personenbezogene Daten durch den Betreiber des Netzwerks erfasst und verarbeitet (z. B. zur Erstellung von Nutzerprofilen für personalisierte Werbung).
+      </p>
+      <p>
+        <strong>Gemeinsame Verantwortlichkeit (Joint Controllership):</strong><br />
+        Für den Betrieb unserer Social-Media-Seiten besteht mit den Plattformbetreibern eine sogenannte gemeinsame Verantwortlichkeit gemäß Art. 26 DSGVO. Wir haben mit den Anbietern entsprechende Vereinbarungen geschlossen. Die primäre Verantwortung für die Erfüllung der Informationspflichten und die Wahrung Ihrer Betroffenenrechte liegt bei den Plattformbetreibern.
+      </p>
+
+      <h3>LinkedIn</h3>
+      <p>
+        Anbieter für Nutzer in der EU ist die LinkedIn Ireland Unlimited Company, Wilton Place, Dublin 2, Irland. Die Datenschutzerklärung von LinkedIn finden Sie unter: <a href="https://www.linkedin.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/legal/privacy-policy</a>. Details zur gemeinsamen Verantwortlichkeit (Page Insights Joint Controller Addendum) finden Sie hier: <a href="https://legal.linkedin.com/pages-joint-controller-addendum" target="_blank" rel="noopener noreferrer">https://legal.linkedin.com/pages-joint-controller-addendum</a>.
+      </p>
+
+      <h3>Xing</h3>
+      <p>
+        Anbieter ist die New Work SE, Am Strandkai 1, 20457 Hamburg, Deutschland. Die Datenschutzerklärung von Xing finden Sie unter: <a href="https://privacy.xing.com/de/datenschutzerklaerung" target="_blank" rel="noopener noreferrer">https://privacy.xing.com/de/datenschutzerklaerung</a>.
+      </p>
+
+      <p>
+        <strong>Rechtsgrundlage:</strong><br />
+        Unsere Social-Media-Auftritte dienen der zeitgemäßen Kommunikation und der Gewinnung von Fachkräften (Recruiting). Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.
+      </p>
+    </section>
+
+    <!-- 9. Rechte betroffener Personen -->
+    <section class="legal-section">
+      <h2>9. Rechte von Bewerbern und betroffenen Personen</h2>
+      <p>
+        Uns ist die Transparenz bei der Verarbeitung Ihrer Daten im sensiblen Recruiting-Umfeld besonders wichtig. Sie können folgende Rechte jederzeit unentgeltlich geltend machen:
+      </p>
+      <ul>
+        <li><strong>Auskunftsrecht (Art. 15 DSGVO):</strong> Sie können Auskunft darüber verlangen, ob und welche Bewerbungs- oder Nutzungsdaten wir von Ihnen verarbeiten.</li>
+        <li><strong>Recht auf Berichtigung (Art. 16 DSGVO):</strong> Sollten Ihre Bewerbungsdaten oder Kontaktdaten fehlerhaft sein, berichtigen wir diese umgehend.</li>
+        <li><strong>Recht auf Löschung (Art. 17 DSGVO):</strong> Sie können die sofortige Löschung Ihrer Daten verlangen (vorbehaltlich gesetzlicher Aufbewahrungsfristen).</li>
+        <li><strong>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO):</strong> Sie können die Verarbeitung einschränken lassen, z. B. wenn die Richtigkeit der Daten umstritten ist.</li>
+        <li><strong>Recht auf Datenübertragbarkeit (Art. 20 DSGVO):</strong> Sie können verlangen, Ihre Bewerbungsdaten in einem strukturierten, maschinenlesbaren Format zu erhalten.</li>
+      </ul>
+      <p>
+        Wenden Sie sich zur Ausübung Ihrer Rechte direkt an uns unter: <a href="mailto:info@bewise-recruiting.de">info@bewise-recruiting.de</a>.
+      </p>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 Bewise GbR. Alle Rechte vorbehalten.</p>
+      <nav class="footer-links" aria-label="Rechtliche Links">
+        <a href="index.html">Zurück zur Startseite</a>
+        <a href="impressum.html">Impressum</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
