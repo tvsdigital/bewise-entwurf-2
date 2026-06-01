@@ -11,14 +11,95 @@
   <meta property="og:type" content="website" />
   <title>Bewise | Recruiting & HR – Strategisches Personalmanagement</title>
 
-  <!-- Google Fonts: Cormorant Garamond (Display) + DM Sans (Body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-
   <style>
     /* ─────────────────────────────────────────────────────
-       CSS CUSTOM PROPERTIES
+        LOKALE SCHRIFTEN EINBINDEN (@font-face)
+    ───────────────────────────────────────────────────── */
+
+    /* --- CORMORANT GARAMOND (Überschriften) --- */
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+      src: url('fonts/cormorant-garamond-v21-latin-300.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: italic;
+      font-weight: 300;
+      font-display: swap;
+      src: url('fonts/cormorant-garamond-v21-latin-300italic.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('fonts/cormorant-garamond-v21-latin-regular.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url('fonts/cormorant-garamond-v21-latin-italic.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('fonts/cormorant-garamond-v21-latin-500.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('fonts/cormorant-garamond-v21-latin-600.woff2') format('woff2');
+    }
+
+    /* --- DM SANS (Fließtext) --- */
+    @font-face {
+      font-family: 'DM Sans';
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+      src: url('fonts/dm-sans-v17-latin-300.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'DM Sans';
+      font-style: italic;
+      font-weight: 300;
+      font-display: swap;
+      src: url('fonts/dm-sans-v17-latin-300italic.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'DM Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('fonts/dm-sans-v17-latin-regular.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'DM Sans';
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url('fonts/dm-sans-v17-latin-italic.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'DM Sans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('fonts/dm-sans-v17-latin-500.woff2') format('woff2');
+    }
+
+
+    /* ─────────────────────────────────────────────────────
+        CSS CUSTOM PROPERTIES
     ───────────────────────────────────────────────────── */
     :root {
       --white:       #FAFAF8;
