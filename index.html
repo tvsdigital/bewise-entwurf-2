@@ -533,103 +533,109 @@
   flex-wrap: wrap;
 }
 
-/* Der Haupt-Container für die Stats */
+/* Der Haupt-Container: Schafft Platz nach unten und zentriert die Boxen */
 .hero-stats {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  
-  /* Der Trick für den edlen Look: Ein sanfter, transparenter Verlauf nach unten hin, 
-     damit sich die Elemente elegant vom Hintergrund abheben, ohne dass es ein harter Balken ist */
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0,6) 40%, rgba(0,0,0,0.9) 100%);
-  
-  /* Mehr Luft nach oben, damit es nicht an den Buttons klebt */
-  padding: 60px 60px 40px 60px; 
+  bottom: 40px;                 /* Holt die Stats weg vom ganz unteren Rand */
+  left: 50%;
+  transform: translateX(-50%);  /* Perfekte Zentrierung auf dem Bildschirm */
+  width: 92%;
+  max-width: 1300px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 absolut gleich große Spalten */
+  gap: 20px;                    /* Knackiger Abstand zwischen den Karten */
   box-sizing: border-box;
   z-index: 10;
 }
 
-/* Einzelne Spalten */
+/* Die edle Premium-Karte für jede einzelne Statistik */
 .hero-stat-item {
+  background: rgba(20, 20, 20, 0.65); /* Sehr edles, transparentes Dunkelgrau */
+  backdrop-filter: blur(12px);       /* Moderner Milchglas-Effekt über dem Hintergrundbild */
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(197, 168, 128, 0.15); /* Hauchdünner, goldener Rahmen */
+  border-radius: 8px;                /* Leicht abgerundete Ecken */
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  flex: 1;
-  padding: 0 20px;
+  justify-content: flex-start;       /* Richtet alles oben aus -> Löst das Baseline-Problem! */
+  min-height: 220px;                 /* Zwingt alle Karten auf exakt dieselbe Höhe */
+  box-sizing: border-box;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-/* Icons (Elegantes, dünneres Design und zentriert) */
+/* Kleiner interaktiver Premium-Effekt beim Drüberfahren */
+.hero-stat-item:hover {
+  border-color: rgba(197, 168, 128, 0.4);
+  transform: translateY(-4px);
+}
+
+/* Das Icon-Styling */
 .hero-stat-icon {
-  color: #d4af37; /* Satterer, edlerer Goldton */
-  margin-bottom: 18px;
+  color: #c5a880;                    /* Dein Corporate Gold */
+  margin-bottom: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 44px;
+  height: 40px;                      /* Fixer Raum fürs Icon */
 }
 
 .hero-stat-icon svg {
-  width: 38px;
-  height: 38px;
-  opacity: 0.95;
+  width: 36px;
+  height: 36px;
 }
 
-/* Große Zahl (beim ersten Element) */
+/* Die große Zahl "10+" */
 .hero-stat-number {
   font-size: 2.4rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #ffffff;
-  margin-bottom: 2px;
   line-height: 1;
-  letter-spacing: -0.02em;
+  margin-bottom: 5px;
 }
 
-/* Die Haupttitel (In Großbuchstaben für den modernen Corporate-Look) */
+/* Die Titel (Jahre Expertise, Persönlicher Ansatz, etc.) */
 .hero-stat-title {
   font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em; /* Schickes, weites Spacing */
+  letter-spacing: 0.1em;
   color: #ffffff;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  min-height: 2.4em;                 /* Reserviert Platz für 2 Zeilen, falls nötig, damit Beschreibungen synchron starten */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Die Beschreibungstexte (Jetzt hell genug für das Bild, dunkel genug für Premium-Feeling) */
+/* Die Beschreibungstexte (Jetzt deutlich lesbarer) */
 .hero-stat-desc {
-  font-size: 0.84rem;
-  color: #b5b5b5; /* Klares, softes Premium-Grau */
+  font-size: 0.85rem;
+  color: #cdcdcd;                    /* Angenehmes Hellgrau */
   line-height: 1.5;
   font-weight: 400;
-  max-width: 240px; /* Perfekter Textfluss ohne unschöne Umbrüche */
+  margin: 0;
 }
 
-/* Responsive Anpassungen */
-@media (max-width: 992px) {
+/* Responsive Anpassungen für kleinere Bildschirme */
+@media (max-width: 1024px) {
   .hero-stats {
-    position: relative; /* Auf Tablets fließt es unter das Bild anstatt drüber zu liegen */
-    background: #090909;
+    grid-template-columns: repeat(2, 1fr); /* 2 Spalten auf Tablets */
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
     padding: 40px 20px;
-    flex-wrap: wrap;
-    gap: 30px;
-  }
-  .hero-stat-item {
-    flex: 1 1 40%;
+    background: #0d0d0d;
   }
 }
 
 @media (max-width: 600px) {
   .hero-stats {
-    flex-direction: column;
-    align-items: center;
-    gap: 35px;
-  }
-  .hero-stat-item {
-    flex: 1 1 100%;
+    grid-template-columns: 1fr; /* 1 Spalte auf Handys */
   }
 }
     /* ─────────────────────────────────────────────────────
