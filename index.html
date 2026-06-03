@@ -533,109 +533,108 @@
   flex-wrap: wrap;
 }
 
-/* Der Haupt-Container: Schafft Platz nach unten und zentriert die Boxen */
+/* Statistiken - Nahtlos integriert & perfekt ausgerichtet */
 .hero-stats {
-  position: absolute;
-  bottom: 40px;                 /* Holt die Stats weg vom ganz unteren Rand */
-  left: 50%;
-  transform: translateX(-50%);  /* Perfekte Zentrierung auf dem Bildschirm */
-  width: 92%;
-  max-width: 1300px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 absolut gleich große Spalten */
-  gap: 20px;                    /* Knackiger Abstand zwischen den Karten */
-  box-sizing: border-box;
-  z-index: 10;
+  position: relative; 
+  z-index: 2;
+  margin-top: auto;        /* Schiebt die Stats stabil nach ganz unten */
+  margin-left: 6vw;
+  margin-right: 6vw;
+  margin-bottom: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(232,223,208,0.15); /* Oberer feiner Trennstrich */
+  
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); /* 4 exakt gleich breite Spalten */
+  gap: 24px;
+  width: calc(100% - 12vw);
 }
 
-/* Die edle Premium-Karte für jede einzelne Statistik */
+/* Einzelne Spalte (Wrapper für die korrekte Ausrichtung) */
 .hero-stat-item {
-  background: rgba(20, 20, 20, 0.65); /* Sehr edles, transparentes Dunkelgrau */
-  backdrop-filter: blur(12px);       /* Moderner Milchglas-Effekt über dem Hintergrundbild */
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(197, 168, 128, 0.15); /* Hauchdünner, goldener Rahmen */
-  border-radius: 8px;                /* Leicht abgerundete Ecken */
-  padding: 30px 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;      /* Zentriert alle Texte und Icons in ihrer Spalte */
   text-align: center;
-  justify-content: flex-start;       /* Richtet alles oben aus -> Löst das Baseline-Problem! */
-  min-height: 220px;                 /* Zwingt alle Karten auf exakt dieselbe Höhe */
+  position: relative;
   box-sizing: border-box;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  justify-content: flex-start; /* Verhindert das Absacken der Spalten ohne Zahl! */
 }
 
-/* Kleiner interaktiver Premium-Effekt beim Drüberfahren */
-.hero-stat-item:hover {
-  border-color: rgba(197, 168, 128, 0.4);
-  transform: translateY(-4px);
+/* Die feinen vertikalen Trennstriche (wie im Wunsch-Screenshot) */
+.hero-stat-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -12px;             /* Platziert den Strich genau mittig im Gap */
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: rgba(232, 223, 208, 0.12); /* Nutzt deine originale Cream-Farbe, nur transparent */
 }
 
-/* Das Icon-Styling */
+/* Das neue Icon-Styling */
 .hero-stat-icon {
-  color: #c5a880;                    /* Dein Corporate Gold */
-  margin-bottom: 15px;
+  color: var(--cream, #e8dfd0); /* Nutzt deine originale Akzentfarbe */
+  margin-bottom: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;                      /* Fixer Raum fürs Icon */
+  height: 40px;             /* Garantiert, dass die Titel alle auf derselben Höhe starten */
 }
 
 .hero-stat-icon svg {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
 }
 
-/* Die große Zahl "10+" */
+/* Große Zahl (nur beim ersten Stat) */
 .hero-stat-number {
-  font-size: 2.4rem;
-  font-weight: 800;
-  color: #ffffff;
+  font-size: 2.2rem;
+  color: var(--cream, #e8dfd0);
+  font-weight: 300;
   line-height: 1;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
-/* Die Titel (Jahre Expertise, Persönlicher Ansatz, etc.) */
+/* Die Titel / Hauptlabels (z.B. PERSÖNLICHER ANSATZ) */
 .hero-stat-title {
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #ffffff;
-  margin-bottom: 12px;
-  min-height: 2.4em;                 /* Reserviert Platz für 2 Zeilen, falls nötig, damit Beschreibungen synchron starten */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: var(--white, #fafaf8); /* Heller, fetter Titel für den Kontrast */
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.3;
 }
 
-/* Die Beschreibungstexte (Jetzt deutlich lesbarer) */
+/* Die Beschreibungen (2. und 3. Zeile: Kleiner und dunkler) */
 .hero-stat-desc {
-  font-size: 0.85rem;
-  color: #cdcdcd;                    /* Angenehmes Hellgrau */
-  line-height: 1.5;
-  font-weight: 400;
+  font-size: 0.72rem;
+  text-transform: uppercase; /* Behält deinen originalen cleanen Look bei */
+  letter-spacing: 0.08em;
+  color: rgba(250,250,248,0.4); /* Deutlich dunkler und dezenter (40% Deckkraft) */
+  line-height: 1.4;
+  max-width: 240px;         /* Verhindert unschöne lange Textzeilen */
   margin: 0;
 }
 
-/* Responsive Anpassungen für kleinere Bildschirme */
+/* Responsive Anpassungen (Perfekt abgestimmt auf deine Media-Queries) */
 @media (max-width: 1024px) {
   .hero-stats {
-    grid-template-columns: repeat(2, 1fr); /* 2 Spalten auf Tablets */
-    position: relative;
-    bottom: auto;
-    left: auto;
-    transform: none;
-    width: 100%;
-    padding: 40px 20px;
-    background: #0d0d0d;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 Grid auf Tablets */
+    gap: 40px 24px;
+  }
+  /* Trennstriche im 2x2 Grid unpassend, daher ausblenden */
+  .hero-stat-item:not(:last-child)::after {
+    display: none;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .hero-stats {
-    grid-template-columns: 1fr; /* 1 Spalte auf Handys */
+    grid-template-columns: 1fr; /* Komplett untereinander auf Smartphones */
+    margin-top: 60px;
+    gap: 32px;
   }
 }
     /* ─────────────────────────────────────────────────────
@@ -1845,6 +1844,7 @@
 
 <div class="hero-stats" aria-label="Kennzahlen">
   
+  <!-- 1. Jahre Expertise -->
   <div class="hero-stat-item">
     <div class="hero-stat-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1858,6 +1858,7 @@
     <div class="hero-stat-desc">Erfahrung, die Vertrauen schafft.</div>
   </div>
 
+  <!-- 2. Persönlicher Ansatz -->
   <div class="hero-stat-item">
     <div class="hero-stat-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1869,9 +1870,11 @@
       </svg>
     </div>
     <div class="hero-stat-title">Persönlicher Ansatz</div>
-    <div class="hero-stat-desc">Jede Besetzung ist so individuell wie Ihr Unternehmen.</div>
+    <div class="hero-stat-desc">Jede Besetzung ist so individuell</div>
+    <div class="hero-stat-desc">wie Ihr Unternehmen.</div>
   </div>
 
+  <!-- 3. Diskrete Besetzung -->
   <div class="hero-stat-item">
     <div class="hero-stat-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1881,9 +1884,11 @@
       </svg>
     </div>
     <div class="hero-stat-title">Diskrete Besetzung</div>
-    <div class="hero-stat-desc">Vertraulichkeit auf höchstem Niveau ist selbstverständlich.</div>
+    <div class="hero-stat-desc">Vertraulichkeit auf höchstem Niveau</div>
+    <div class="hero-stat-desc">ist für uns selbstverständlich.</div>
   </div>
 
+  <!-- 4. Deutschlandweit -->
   <div class="hero-stat-item">
     <div class="hero-stat-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1892,8 +1897,11 @@
       </svg>
     </div>
     <div class="hero-stat-title">Deutschlandweit</div>
-    <div class="hero-stat-desc">Wir finden die richtigen Talente – überall in Deutschland.</div>
+    <div class="hero-stat-desc">Wir finden die richtigen Talente –</div>
+    <div class="hero-stat-desc">überall in Deutschland.</div>
   </div>
+
+</div>
 
 </div>
       <div class="scroll-indicator" aria-hidden="true">
