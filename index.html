@@ -537,7 +537,7 @@
 .hero-stats {
   position: relative; 
   z-index: 2;
-  margin-top: auto;        /* Schiebt die Stats stabil nach unten */
+  margin-top: auto;        
   margin-left: 6vw;
   margin-right: 6vw;
   margin-bottom: 48px;
@@ -546,7 +546,7 @@
   
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;  /* Alle Spalten starten absolut bündig an der Oberkante */
+  align-items: flex-start;  
   width: calc(100% - 12vw);
 }
 
@@ -555,7 +555,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;      /* Zentriert den Inhalt in der Spalte */
+  align-items: center;      
   text-align: center;
   position: relative;
   box-sizing: border-box;
@@ -573,23 +573,23 @@
   background: rgba(232, 223, 208, 0.12); 
 }
 
-/* KORREKTUR: Richtet den Inhalt stur OBEN aus, damit nichts mehr absackt! */
-.hero-stat-icon-wrapper {
+/* RETTUNG: Untenbündige Ausrichtung der visuellen Elemente! */
+.hero-stat-visual-zone {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Zwingt alles an die Oberkante */
-  height: 75px;                /* Leicht erhöht, um der Zahl entspannt Platz zu bieten */
-  margin-bottom: 16px;         /* Gleicher Abstand zum Titel für ALLE Spalten */
+  justify-content: flex-end; /* Zwingt alle Icons auf exakt dieselbe Grundlinie! */
+  height: 75px;              /* Fester Platzhalter für das visuelle Paket */
+  margin-bottom: 18px;       /* Garantiert den identischen Abstand zum Folgetext */
 }
 
-/* Die große Zahl: Schön kompakt direkt über dem Icon */
+/* Die große Zahl: Steht exakt über dem ersten Icon */
 .hero-stat-number {
   font-size: 1.8rem;        
   color: var(--cream, #e8dfd0);
   font-weight: 300;
   line-height: 1;
-  margin-bottom: 6px;          /* Minimaler Abstand zum direkt darunterliegenden Icon */
+  margin-bottom: 6px;       
 }
 
 /* Das Icon selbst */
@@ -598,6 +598,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 36px;              /* Fixiert die Höhe des Icons auf den SVG-Wert */
 }
 
 .hero-stat-icon svg {
@@ -605,7 +606,7 @@
   height: 36px;
 }
 
-/* Die Titel (PERSÖNLICHER ANSATZ, etc.) - Jetzt wie an einer Schnur gezogen */
+/* Die Titel (JAHRE EXPERTISE, etc.) - Jetzt wie festgenagelt auf einer Linie */
 .hero-stat-title {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -614,7 +615,6 @@
   font-weight: 600;
   margin-bottom: 8px;
   line-height: 1.3;
-  min-height: 1.3em;        
 }
 
 /* Die Beschreibungen darunter */
@@ -1859,9 +1859,9 @@
 
 <div class="hero-stats" aria-label="Kennzahlen">
   
-<!-- 1. Jahre Expertise -->
+  <!-- 1. Jahre Expertise -->
   <div class="hero-stat-item">
-    <div class="hero-stat-icon-wrapper">
+    <div class="hero-stat-visual-zone">
       <div class="hero-stat-number">10+</div>
       <div class="hero-stat-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1877,7 +1877,7 @@
 
   <!-- 2. Persönlicher Ansatz -->
   <div class="hero-stat-item">
-    <div class="hero-stat-icon-wrapper">
+    <div class="hero-stat-visual-zone">
       <div class="hero-stat-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
@@ -1891,7 +1891,7 @@
 
   <!-- 3. Diskrete Besetzung -->
   <div class="hero-stat-item">
-    <div class="hero-stat-icon-wrapper">
+    <div class="hero-stat-visual-zone">
       <div class="hero-stat-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -1906,7 +1906,7 @@
 
   <!-- 4. Deutschlandweit -->
   <div class="hero-stat-item">
-    <div class="hero-stat-icon-wrapper">
+    <div class="hero-stat-visual-zone">
       <div class="hero-stat-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
