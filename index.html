@@ -534,35 +534,41 @@
 }
 
 /* Haupt-Leiste für die Stats: Jetzt über die volle Breite gestreckt */
+
+.hero {
+  position: relative;
+}
+    
 .hero-stats {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   display: flex;
-  justify-content: space-between; /* Verteilt die 4 Spalten mit maximalem, gleichmäßigem Abstand */
-  align-items: flex-start;        /* Richtet alle Spalten oben an den Icons aus */
-  width: 100%;                    /* Zwingt die Leiste, die volle Breite des Hero-Bereichs zu nutzen */
-  max-width: 1200px;              /* Verhindert bei extrem breiten Monitoren ein zu weites Auseinanderdriften */
-  margin: 0 auto;                 /* Zentriert die gesamte Leiste auf der Seite */
-  padding: 30px 40px;             /* Genug Luft nach innen, besonders links und rechts */
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #000000; 
+  padding: 30px 40px;
   box-sizing: border-box;
+  z-index: 10; 
 }
 
-/* Die einzelnen Spalten-Boxen */
 .hero-stat-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  flex: 1;                        /* Gibt jeder Spalte exakt den gleichen verfügbaren Platz */
-  padding: 0 15px;                /* Sicherheitsabstand zwischen den Spalten */
+  flex: 1;                        
+  padding: 0 15px;                
 }
 
-/* Icons perfekt formatieren */
 .hero-stat-icon {
-  color: #c5a880;                 /* Goldton */
-  margin-bottom: 15px;            /* Einheitlicher Abstand nach unten zum Text/Zahl */
+  color: #c5a880;                 
+  margin-bottom: 15px;            
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 48px;                   /* Fixe Höhe, damit alle Titel auf exakt derselben Höhe starten */
+  height: 48px;                  
 }
 
 .hero-stat-icon svg {
@@ -570,7 +576,6 @@
   height: 40px;
 }
 
-/* Große Zahl (Sonderfall bei der ersten Spalte) */
 .hero-stat-number {
   font-size: 2.2rem;
   font-weight: bold;
@@ -579,7 +584,6 @@
   line-height: 1;
 }
 
-/* Hauptüberschriften */
 .hero-stat-title {
   font-size: 1rem;
   font-weight: bold;
@@ -589,30 +593,29 @@
   margin-bottom: 10px;
 }
 
-/* Beschreibungen (2. und 3. Zeile) */
 .hero-stat-desc {
   font-size: 0.82rem;
-  color: #a0a0a0;                 /* Gedimmtes Grau aus dem Screenshot */
+  color: #a0a0a0;                 
   line-height: 1.4;
   font-weight: 400;
-  max-width: 220px;               /* Erzwingt den Zeilenumbruch an den richtigen Stellen */
+  max-width: 220px;               
 }
 
-/* Responsive Anpassung für Tablets & Smartphones */
+
 @media (max-width: 900px) {
   .hero-stats {
-    flex-wrap: wrap;              /* Erlaubt Umbruch auf kleineren Bildschirmen */
+    flex-wrap: wrap;             
     justify-content: center;
     gap: 30px;
   }
   .hero-stat-item {
-    flex: 1 1 40%;                /* Zeigt auf Tablets je 2 nebeneinander an */
+    flex: 1 1 40%;                
   }
 }
 
 @media (max-width: 600px) {
   .hero-stats {
-    flex-direction: column;       /* Auf Smartphones alle stur untereinander */
+    flex-direction: column;      
     align-items: center;
   }
 }
