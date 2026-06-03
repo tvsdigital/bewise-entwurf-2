@@ -533,7 +533,7 @@
   flex-wrap: wrap;
 }
 
-/* Statistiken - Hauptcontainer aus deinem Original */
+/* Statistiken - Hauptcontainer */
 .hero-stats {
   position: relative; 
   z-index: 2;
@@ -573,14 +573,23 @@
   background: rgba(232, 223, 208, 0.12); 
 }
 
-/* Der Icon-Bereich: Garantiert dieselbe Starthöhe für alle Spalten */
+/* KORREKTUR: Richtet den Inhalt stur OBEN aus, damit nichts mehr absackt! */
 .hero-stat-icon-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 70px;             /* Feste Höhe für den Icon/Zahl-Bereich */
-  margin-bottom: 16px;      /* Gleicher Abstand zum Titel für ALLE Spalten */
+  justify-content: flex-start; /* Zwingt alles an die Oberkante */
+  height: 75px;                /* Leicht erhöht, um der Zahl entspannt Platz zu bieten */
+  margin-bottom: 16px;         /* Gleicher Abstand zum Titel für ALLE Spalten */
+}
+
+/* Die große Zahl: Schön kompakt direkt über dem Icon */
+.hero-stat-number {
+  font-size: 1.8rem;        
+  color: var(--cream, #e8dfd0);
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 6px;          /* Minimaler Abstand zum direkt darunterliegenden Icon */
 }
 
 /* Das Icon selbst */
@@ -596,16 +605,7 @@
   height: 36px;
 }
 
-/* Die große Zahl: Steht kompakt über/beim Icon, ohne die Spaltenhöhe zu sprengen */
-.hero-stat-number {
-  font-size: 1.8rem;        /* Etwas kompakter, damit es edel wirkt */
-  color: var(--cream, #e8dfd0);
-  font-weight: 300;
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-/* Die Titel (PERSÖNLICHER ANSATZ, etc.) - Jetzt wie mit dem Lineal gezogen auf einer Höhe */
+/* Die Titel (PERSÖNLICHER ANSATZ, etc.) - Jetzt wie an einer Schnur gezogen */
 .hero-stat-title {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -614,7 +614,7 @@
   font-weight: 600;
   margin-bottom: 8px;
   line-height: 1.3;
-  min-height: 1.3em;        /* Sichert die exakt gleiche Standlinie */
+  min-height: 1.3em;        
 }
 
 /* Die Beschreibungen darunter */
@@ -624,7 +624,7 @@
   letter-spacing: 0.08em;
   color: rgba(250,250,248,0.4); 
   line-height: 1.5;
-  max-width: 220px;         /* Verhindert unschöne einzeilige Ausreißer */
+  max-width: 220px;         
   margin: 0;
 }
 
