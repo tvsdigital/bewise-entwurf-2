@@ -533,90 +533,103 @@
   flex-wrap: wrap;
 }
 
-/* Haupt-Leiste für die Stats: Jetzt über die volle Breite gestreckt */
-
-.hero {
-  position: relative;
-}
-    
+/* Der Haupt-Container für die Stats */
 .hero-stats {
   position: absolute;
-  bottom: 20px;          
+  bottom: 0;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  background: transparent;
-  padding: 10px 40px;
+  
+  /* Der Trick für den edlen Look: Ein sanfter, transparenter Verlauf nach unten hin, 
+     damit sich die Elemente elegant vom Hintergrund abheben, ohne dass es ein harter Balken ist */
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0,6) 40%, rgba(0,0,0,0.9) 100%);
+  
+  /* Mehr Luft nach oben, damit es nicht an den Buttons klebt */
+  padding: 60px 60px 40px 60px; 
   box-sizing: border-box;
-  z-index: 10; 
+  z-index: 10;
 }
 
+/* Einzelne Spalten */
 .hero-stat-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  flex: 1;                        
-  padding: 0 15px;                
+  flex: 1;
+  padding: 0 20px;
 }
 
+/* Icons (Elegantes, dünneres Design und zentriert) */
 .hero-stat-icon {
-  color: #c5a880;                 
-  margin-bottom: 15px;            
+  color: #d4af37; /* Satterer, edlerer Goldton */
+  margin-bottom: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 48px;                  
+  height: 44px;
 }
 
 .hero-stat-icon svg {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
+  opacity: 0.95;
 }
 
+/* Große Zahl (beim ersten Element) */
 .hero-stat-number {
-  font-size: 2.2rem;
-  font-weight: bold;
+  font-size: 2.4rem;
+  font-weight: 700;
   color: #ffffff;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   line-height: 1;
+  letter-spacing: -0.02em;
 }
 
+/* Die Haupttitel (In Großbuchstaben für den modernen Corporate-Look) */
 .hero-stat-title {
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: 0.95rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em; /* Schickes, weites Spacing */
   color: #ffffff;
   margin-bottom: 10px;
 }
 
+/* Die Beschreibungstexte (Jetzt hell genug für das Bild, dunkel genug für Premium-Feeling) */
 .hero-stat-desc {
-  font-size: 0.82rem;
-  color: #a0a0a0;                 
-  line-height: 1.4;
+  font-size: 0.84rem;
+  color: #b5b5b5; /* Klares, softes Premium-Grau */
+  line-height: 1.5;
   font-weight: 400;
-  max-width: 220px;               
+  max-width: 240px; /* Perfekter Textfluss ohne unschöne Umbrüche */
 }
 
-
-@media (max-width: 900px) {
+/* Responsive Anpassungen */
+@media (max-width: 992px) {
   .hero-stats {
-    flex-wrap: wrap;             
-    justify-content: center;
+    position: relative; /* Auf Tablets fließt es unter das Bild anstatt drüber zu liegen */
+    background: #090909;
+    padding: 40px 20px;
+    flex-wrap: wrap;
     gap: 30px;
   }
   .hero-stat-item {
-    flex: 1 1 40%;                
+    flex: 1 1 40%;
   }
 }
 
 @media (max-width: 600px) {
   .hero-stats {
-    flex-direction: column;      
+    flex-direction: column;
     align-items: center;
+    gap: 35px;
+  }
+  .hero-stat-item {
+    flex: 1 1 100%;
   }
 }
     /* ─────────────────────────────────────────────────────
@@ -1828,7 +1841,7 @@
   
   <div class="hero-stat-item">
     <div class="hero-stat-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="8" r="6" />
         <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
         <polygon points="12 5 13 7 15 7 13.5 8.5 14 10.5 12 9.5 10 10.5 10.5 8.5 9 7 11 7" />
@@ -1841,46 +1854,42 @@
 
   <div class="hero-stat-item">
     <div class="hero-stat-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
         <circle cx="12" cy="7" r="4" />
-        <path d="m7 17.5.5.5.5-.5-.2-.7.2-.7-.5.2-.5-.2.1.7z" fill="currentColor" />
-        <path d="m12 17.5.5.5.5-.5-.2-.7.2-.7-.5.2-.5-.2.1.7z" fill="currentColor" />
-        <path d="m17 17.5.5.5.5-.5-.2-.7.2-.7-.5.2-.5-.2.1.7z" fill="currentColor" />
+        <path d="m7 16.5.5.5.5-.5-.2-.7.2-.7-.5.2-.5-.2.1.7z" fill="currentColor" />
+        <path d="m12 16.5.5.5.5-.5-.2-.7.2-.7-.5.2-.5-.2.1.7z" fill="currentColor" />
+        <path d="m17 16.5.5.5.5-.5-.2-.7.2-.7-.5.2-.5-.2.1.7z" fill="currentColor" />
       </svg>
     </div>
     <div class="hero-stat-title">Persönlicher Ansatz</div>
-    <div class="hero-stat-desc">Jede Besetzung ist so individuell</div>
-    <div class="hero-stat-desc">wie Ihr Unternehmen.</div>
+    <div class="hero-stat-desc">Jede Besetzung ist so individuell wie Ihr Unternehmen.</div>
   </div>
 
   <div class="hero-stat-item">
     <div class="hero-stat-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         <rect x="10" y="11" width="4" height="4" rx="1" />
         <path d="M11 11V9a1 1 0 0 1 2 0v2" />
       </svg>
     </div>
     <div class="hero-stat-title">Diskrete Besetzung</div>
-    <div class="hero-stat-desc">Vertraulichkeit auf höchstem Niveau</div>
-    <div class="hero-stat-desc">ist für uns selbstverständlich.</div>
+    <div class="hero-stat-desc">Vertraulichkeit auf höchstem Niveau ist selbstverständlich.</div>
   </div>
 
   <div class="hero-stat-item">
     <div class="hero-stat-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
         <circle cx="12" cy="10" r="3" />
       </svg>
     </div>
     <div class="hero-stat-title">Deutschlandweit</div>
-    <div class="hero-stat-desc">Wir finden die richtigen Talente –</div>
-    <div class="hero-stat-desc">überall in Deutschland.</div>
+    <div class="hero-stat-desc">Wir finden die richtigen Talente – überall in Deutschland.</div>
   </div>
 
 </div>
-
       <div class="scroll-indicator" aria-hidden="true">
         <div class="scroll-indicator-line"></div>
         <span>Scroll</span>
