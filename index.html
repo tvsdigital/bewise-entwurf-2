@@ -533,105 +533,111 @@
   flex-wrap: wrap;
 }
 
+/* Statistiken - Hauptcontainer */
 .hero-stats {
   position: relative; 
   z-index: 2;
-  margin-top: auto;        
+  margin-top: auto;        /* Schiebt die Stats sauber nach unten */
   margin-left: 6vw;
   margin-right: 6vw;
   margin-bottom: 48px;
   padding-top: 32px;
   border-top: 1px solid rgba(232,223,208,0.15); 
   
-  display: grid; 
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;  /* Zwingt alle Spalten, exakt am Icon oben auszurichten */
   width: calc(100% - 12vw);
 }
 
+/* Die einzelnen Spalten */
 .hero-stat-item {
-  display: grid;
-  grid-template-rows: auto auto auto 1fr; 
-  align-items: start;      
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   position: relative;
   box-sizing: border-box;
+  padding: 0 10px;
+  /* WICHTIG: Ein fester oberer Abstand sorgt für Platz, falls eine Zahl darüber schwebt */
+  padding-top: 45px; 
 }
 
+/* Die feinen Trennstriche zwischen den Spalten */
 .hero-stat-item:not(:last-child)::after {
   content: "";
   position: absolute;
-  right: -12px;             
-  top: 10%;
-  height: 80%;
+  right: 0;             
+  top: 20%;
+  height: 70%;
   width: 1px;
   background: rgba(232, 223, 208, 0.12); 
 }
 
+/* Das Icon - bildet für alle Spalten die perfekte obere Kante */
 .hero-stat-icon {
   color: var(--cream, #e8dfd0); 
   margin-bottom: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;             
-  grid-row: 1;
-}
-
-.hero-stat-icon svg {
-  width: 38px;
   height: 38px;
 }
 
+.hero-stat-icon svg {
+  width: 36px;
+  height: 36px;
+}
 
+/* Die große Zahl schwebt nun absolut über dem Icon, ohne Platz wegzunehmen */
 .hero-stat-number {
+  position: absolute;
+  top: 0;                   /* Sitzt ganz oben am Rand der Spalte */
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 2.2rem;
   color: var(--cream, #e8dfd0);
   font-weight: 300;
   line-height: 1;
-  margin-bottom: 12px;
-  grid-row: 2;
-  min-height: 2.2rem;       
 }
 
-.hero-stat-item:not(:first-child) .hero-stat-number {
-  display: block;
-  content: "";
+/* Wenn ein Element eine Zahl hat, schieben wir das Icon einfach ein Stück nach unten */
+.hero-stat-item:has(.hero-stat-number:not(:empty)) .hero-stat-icon {
+  margin-top: 35px;
 }
 
+/* Die Titel (PERSÖNLICHER ANSATZ, etc.) - Jetzt alle auf exakt gleicher Höhe */
 .hero-stat-title {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--white, #fafaf8); 
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   line-height: 1.3;
-  grid-row: 3;
-  min-height: 1.3em;       
 }
 
+/* Die Beschreibungen darunter */
 .hero-stat-desc {
   font-size: 0.72rem;
   text-transform: uppercase; 
   letter-spacing: 0.08em;
   color: rgba(250,250,248,0.4); 
-  line-height: 1.4;
-  max-width: 240px;         
-  margin: 0 auto;
-  grid-row: 4;
+  line-height: 1.5;
+  max-width: 220px;         /* Verhindert das unschöne Auseinanderziehen in eine Zeile */
+  margin: 0;
 }
 
+/* Responsive Anpassungen */
 @media (max-width: 1024px) {
   .hero-stats {
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 40px 24px;
+    flex-wrap: wrap;
+    gap: 40px 0;
   }
   .hero-stat-item {
-    grid-template-rows: auto; 
-  }
-  .hero-stat-item .hero-stat-number {
-    min-height: 0;          
+    flex: 0 0 50%;          /* 2 Spalten auf Tablets */
+    padding-top: 35px;
   }
   .hero-stat-item:not(:last-child)::after {
     display: none;
@@ -640,9 +646,12 @@
 
 @media (max-width: 768px) {
   .hero-stats {
-    grid-template-columns: 1fr; 
-    margin-top: 60px;
+    flex-direction: column;
+    align-items: center;
     gap: 32px;
+  }
+  .hero-stat-item {
+    flex: 0 0 100%;         /* 1 Spalte auf Handys */
   }
 }
     /* ─────────────────────────────────────────────────────
@@ -1878,7 +1887,6 @@
         <path d="m17 16.5.5.5.5-.5-.2-.7.2-.7-.5.2-.5-.2.1.7z" fill="currentColor" />
       </svg>
     </div>
-    <div class="hero-stat-icon"></div>
     <div class="hero-stat-title">Persönlicher Ansatz</div>
     <div class="hero-stat-desc">Jede Besetzung ist so individuell</div>
     <div class="hero-stat-desc">wie Ihr Unternehmen.</div>
@@ -1893,7 +1901,6 @@
         <path d="M11 11V9a1 1 0 0 1 2 0v2" />
       </svg>
     </div>
-    <div class="hero-stat-icon"></div>
     <div class="hero-stat-title">Diskrete Besetzung</div>
     <div class="hero-stat-desc">Vertraulichkeit auf höchstem Niveau</div>
     <div class="hero-stat-desc">ist für uns selbstverständlich.</div>
@@ -1907,7 +1914,6 @@
         <circle cx="12" cy="10" r="3" />
       </svg>
     </div>
-    <div class="hero-stat-icon"></div>
     <div class="hero-stat-title">Deutschlandweit</div>
     <div class="hero-stat-desc">Wir finden die richtigen Talente –</div>
     <div class="hero-stat-desc">überall in Deutschland.</div>
