@@ -533,53 +533,49 @@
   flex-wrap: wrap;
 }
 
-/* Statistiken - Nahtlos integriert & perfekt ausgerichtet */
 .hero-stats {
   position: relative; 
   z-index: 2;
-  margin-top: auto;        /* Schiebt die Stats stabil nach ganz unten */
+  margin-top: auto;        
   margin-left: 6vw;
   margin-right: 6vw;
   margin-bottom: 48px;
   padding-top: 32px;
-  border-top: 1px solid rgba(232,223,208,0.15); /* Oberer feiner Trennstrich */
+  border-top: 1px solid rgba(232,223,208,0.15); 
   
   display: grid; 
-  grid-template-columns: repeat(4, 1fr); /* 4 exakt gleich breite Spalten */
+  grid-template-columns: repeat(4, 1fr); 
   gap: 24px;
   width: calc(100% - 12vw);
 }
 
-/* Einzelne Spalte (Wrapper für die korrekte Ausrichtung) */
 .hero-stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;      /* Zentriert alle Texte und Icons in ihrer Spalte */
+  display: grid;
+  grid-template-rows: auto auto auto 1fr; 
+  align-items: start;      
   text-align: center;
   position: relative;
   box-sizing: border-box;
-  justify-content: flex-start; /* Verhindert das Absacken der Spalten ohne Zahl! */
 }
 
-/* Die feinen vertikalen Trennstriche (wie im Wunsch-Screenshot) */
 .hero-stat-item:not(:last-child)::after {
   content: "";
   position: absolute;
-  right: -12px;             /* Platziert den Strich genau mittig im Gap */
+  right: -12px;             
   top: 10%;
   height: 80%;
   width: 1px;
-  background: rgba(232, 223, 208, 0.12); /* Nutzt deine originale Cream-Farbe, nur transparent */
+  background: rgba(232, 223, 208, 0.12); 
 }
 
-/* Das neue Icon-Styling */
 .hero-stat-icon {
-  color: var(--cream, #e8dfd0); /* Nutzt deine originale Akzentfarbe */
+  color: var(--cream, #e8dfd0); 
   margin-bottom: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;             /* Garantiert, dass die Titel alle auf derselben Höhe starten */
+  height: 40px;             
+  grid-row: 1;
 }
 
 .hero-stat-icon svg {
@@ -587,44 +583,56 @@
   height: 38px;
 }
 
-/* Große Zahl (nur beim ersten Stat) */
+
 .hero-stat-number {
   font-size: 2.2rem;
   color: var(--cream, #e8dfd0);
   font-weight: 300;
   line-height: 1;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
+  grid-row: 2;
+  min-height: 2.2rem;       
 }
 
-/* Die Titel / Hauptlabels (z.B. PERSÖNLICHER ANSATZ) */
+.hero-stat-item:not(:first-child) .hero-stat-number {
+  display: block;
+  content: "";
+}
+
 .hero-stat-title {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--white, #fafaf8); /* Heller, fetter Titel für den Kontrast */
+  color: var(--white, #fafaf8); 
   font-weight: 600;
   margin-bottom: 8px;
   line-height: 1.3;
+  grid-row: 3;
+  min-height: 1.3em;       
 }
 
-/* Die Beschreibungen (2. und 3. Zeile: Kleiner und dunkler) */
 .hero-stat-desc {
   font-size: 0.72rem;
-  text-transform: uppercase; /* Behält deinen originalen cleanen Look bei */
+  text-transform: uppercase; 
   letter-spacing: 0.08em;
-  color: rgba(250,250,248,0.4); /* Deutlich dunkler und dezenter (40% Deckkraft) */
+  color: rgba(250,250,248,0.4); 
   line-height: 1.4;
-  max-width: 240px;         /* Verhindert unschöne lange Textzeilen */
-  margin: 0;
+  max-width: 240px;         
+  margin: 0 auto;
+  grid-row: 4;
 }
 
-/* Responsive Anpassungen (Perfekt abgestimmt auf deine Media-Queries) */
 @media (max-width: 1024px) {
   .hero-stats {
-    grid-template-columns: repeat(2, 1fr); /* 2x2 Grid auf Tablets */
+    grid-template-columns: repeat(2, 1fr); 
     gap: 40px 24px;
   }
-  /* Trennstriche im 2x2 Grid unpassend, daher ausblenden */
+  .hero-stat-item {
+    grid-template-rows: auto; 
+  }
+  .hero-stat-item .hero-stat-number {
+    min-height: 0;          
+  }
   .hero-stat-item:not(:last-child)::after {
     display: none;
   }
@@ -632,7 +640,7 @@
 
 @media (max-width: 768px) {
   .hero-stats {
-    grid-template-columns: 1fr; /* Komplett untereinander auf Smartphones */
+    grid-template-columns: 1fr; 
     margin-top: 60px;
     gap: 32px;
   }
@@ -1853,6 +1861,7 @@
         <polygon points="12 5 13 7 15 7 13.5 8.5 14 10.5 12 9.5 10 10.5 10.5 8.5 9 7 11 7" />
       </svg>
     </div>
+    <div class="hero-stat-icon"></div>
     <div class="hero-stat-number">10+</div>
     <div class="hero-stat-title">Jahre Expertise</div>
     <div class="hero-stat-desc">Erfahrung, die Vertrauen schafft.</div>
@@ -1869,6 +1878,7 @@
         <path d="m17 16.5.5.5.5-.5-.2-.7.2-.7-.5.2-.5-.2.1.7z" fill="currentColor" />
       </svg>
     </div>
+    <div class="hero-stat-icon"></div>
     <div class="hero-stat-title">Persönlicher Ansatz</div>
     <div class="hero-stat-desc">Jede Besetzung ist so individuell</div>
     <div class="hero-stat-desc">wie Ihr Unternehmen.</div>
@@ -1883,6 +1893,7 @@
         <path d="M11 11V9a1 1 0 0 1 2 0v2" />
       </svg>
     </div>
+    <div class="hero-stat-icon"></div>
     <div class="hero-stat-title">Diskrete Besetzung</div>
     <div class="hero-stat-desc">Vertraulichkeit auf höchstem Niveau</div>
     <div class="hero-stat-desc">ist für uns selbstverständlich.</div>
@@ -1896,6 +1907,7 @@
         <circle cx="12" cy="10" r="3" />
       </svg>
     </div>
+    <div class="hero-stat-icon"></div>
     <div class="hero-stat-title">Deutschlandweit</div>
     <div class="hero-stat-desc">Wir finden die richtigen Talente –</div>
     <div class="hero-stat-desc">überall in Deutschland.</div>
