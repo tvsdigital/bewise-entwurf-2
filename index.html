@@ -534,31 +534,73 @@
 }
 
 /* Statistiken - Fix für Überlappung */
+/* Haupt-Grid für die 4 Spalten (Nebeneinander auf Desktop) */
 .hero-stats {
-  position: relative; /* Ändern von absolute auf relative für besseren Flow */
-  z-index: 2;
-  margin-top: auto; /* Schiebt die Stats nach unten */
-  margin-left: 6vw;
-  margin-right: 6vw;
-  margin-bottom: 48px;
-  padding-top: 28px;
-  border-top: 1px solid rgba(232,223,208,0.15);
-  display: grid; /* Grid ist sauberer für Stats */
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 32px;
-  width: calc(100% - 12vw);
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 30px;
+  background-color: #000000; /* Hintergrundfarbe falls nötig für den Kontrast */
+  padding: 40px 20px;
+  font-family: sans-serif;   /* Falls nötig durch deine Schriftart ersetzen */
 }
 
+/* Einzelne Spalten-Box */
+.hero-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+/* Styling für die Icons */
+.hero-stat-icon {
+  color: #c5a880;            /* Der edle Goldton aus dem Screenshot */
+  margin-bottom: 20px;       /* Genügend Abstand nach unten */
+}
+
+.hero-stat-icon svg {
+  width: 44px;               /* Icon-Größe */
+  height: 44px;
+  display: block;
+}
+
+/* Große Zahl (beim ersten Stat) */
 .hero-stat-number {
   font-size: 2.2rem;
-  color: var(--cream, #e8dfd0);
-  font-weight: 300;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 8px;
+  line-height: 1.1;
 }
-.hero-stat-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(250,250,248,0.5);
+
+/* Hauptüberschriften (Persönlicher Ansatz, Deutschlandweit etc.) */
+.hero-stat-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase; /* Komplett in Großbuchstaben wie im Screenshot */
+  letter-spacing: 0.08em;    /* Schickes Spacing zwischen den Buchstaben */
+  color: #ffffff;
+  margin-bottom: 12px;       /* Platz vor der Beschreibung */
+}
+
+/* Beschreibungen (2. und 3. Textzeile) */
+.hero-stat-desc {
+  font-size: 0.88rem;        /* Sichtbar kleiner */
+  color: #a0a0a0;            /* Dunkleres, dezentes Grau für weniger Kontrast */
+  line-height: 1.5;          /* Angenehmer Leseabstand */
+  font-weight: 400;
+  max-width: 260px;          /* Verhindert, dass der Text unschön in die Breite gezogen wird */
+}
+
+/* Responsive Anpassung für Smartphones (Untereinander anstatt nebeneinander) */
+@media (max-width: 768px) {
+  .hero-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
 }
 
 /* Animationen */
@@ -1806,24 +1848,62 @@
         </div>
       </div>
 
-      <div class="hero-stats" aria-label="Kennzahlen">
-        <div>
-          <div class="hero-stat-number">98%</div>
-          <div class="hero-stat-label">Erfolgsquote</div>
-        </div>
-        <div>
-          <div class="hero-stat-number">500+</div>
-          <div class="hero-stat-label">Erfolgreiche Placements</div>
-        </div>
-        <div>
-          <div class="hero-stat-number">10+</div>
-          <div class="hero-stat-label">Jahre Expertise</div>
-        </div>
-        <div>
-          <div class="hero-stat-number">120+</div>
-          <div class="hero-stat-label">Partnerunternehmen</div>
-        </div>
-      </div>
+<div class="hero-stats" aria-label="Kennzahlen">
+  
+  <div class="hero-stat-item">
+    <div class="hero-stat-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="6" />
+        <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+        <polygon points="12 5 13 7 15 7 13.5 8.5 14 10.5 12 9.5 10 10.5 10.5 8.5 9 7 11 7" />
+      </svg>
+    </div>
+    <div class="hero-stat-number">10+</div>
+    <div class="hero-stat-title">Jahre Expertise</div>
+    <div class="hero-stat-desc">Erfahrung, die Vertrauen schafft.</div>
+  </div>
+
+  <div class="hero-stat-item">
+    <div class="hero-stat-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
+        <path d="m7 17.5.5.5.5-.5-.2-.7.2-.7-.5.2-.5-.2.1.7z" fill="currentColor" />
+        <path d="m12 17.5.5.5.5-.5-.2-.7.2-.7-.5.2-.5-.2.1.7z" fill="currentColor" />
+        <path d="m17 17.5.5.5.5-.5-.2-.7.2-.7-.5.2-.5-.2.1.7z" fill="currentColor" />
+      </svg>
+    </div>
+    <div class="hero-stat-title">Persönlicher Ansatz</div>
+    <div class="hero-stat-desc">Jede Besetzung ist so individuell</div>
+    <div class="hero-stat-desc">wie Ihr Unternehmen.</div>
+  </div>
+
+  <div class="hero-stat-item">
+    <div class="hero-stat-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <rect x="10" y="11" width="4" height="4" rx="1" />
+        <path d="M11 11V9a1 1 0 0 1 2 0v2" />
+      </svg>
+    </div>
+    <div class="hero-stat-title">Diskrete Besetzung</div>
+    <div class="hero-stat-desc">Vertraulichkeit auf höchstem Niveau</div>
+    <div class="hero-stat-desc">ist für uns selbstverständlich.</div>
+  </div>
+
+  <div class="hero-stat-item">
+    <div class="hero-stat-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+    </div>
+    <div class="hero-stat-title">Deutschlandweit</div>
+    <div class="hero-stat-desc">Wir finden die richtigen Talente –</div>
+    <div class="hero-stat-desc">überall in Deutschland.</div>
+  </div>
+
+</div>
 
       <div class="scroll-indicator" aria-hidden="true">
         <div class="scroll-indicator-line"></div>
