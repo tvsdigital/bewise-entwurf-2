@@ -533,7 +533,6 @@
   flex-wrap: wrap;
 }
 
-/* Statistiken - Hauptcontainer */
 .hero-stats {
   position: relative; 
   z-index: 2;
@@ -550,7 +549,6 @@
   width: calc(100% - 12vw);
 }
 
-/* Jede Spalte verhält sich jetzt absolut identisch */
 .hero-stat-item {
   flex: 1;
   display: flex;
@@ -562,7 +560,6 @@
   padding: 0 15px;
 }
 
-/* Die feinen Trennstriche zwischen den Spalten */
 .hero-stat-item:not(:last-child)::after {
   content: "";
   position: absolute;
@@ -573,40 +570,38 @@
   background: rgba(232, 223, 208, 0.12); 
 }
 
-/* RETTUNG: Untenbündige Ausrichtung der visuellen Elemente! */
-.hero-stat-visual-zone {
+.hero-stat-icon-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end; /* Zwingt alle Icons auf exakt dieselbe Grundlinie! */
-  height: 75px;              /* Fester Platzhalter für das visuelle Paket */
-  margin-bottom: 18px;       /* Garantiert den identischen Abstand zum Folgetext */
+  justify-content: flex-end; 
+  height: 50px;              
+  margin-bottom: 24px;       
 }
 
-/* Die große Zahl: Steht exakt über dem ersten Icon */
+/* Die Zahl in Spalte 1 */
 .hero-stat-number {
-  font-size: 1.8rem;        
+  font-size: 2rem;           
   color: var(--cream, #e8dfd0);
   font-weight: 300;
-  line-height: 1;
-  margin-bottom: 6px;       
+  line-height: 0.9;         
+  margin: 0;
 }
 
-/* Das Icon selbst */
 .hero-stat-icon {
   color: var(--cream, #e8dfd0); 
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 36px;              /* Fixiert die Höhe des Icons auf den SVG-Wert */
+  height: 36px;             
 }
 
 .hero-stat-icon svg {
   width: 36px;
   height: 36px;
+  display: block;
 }
 
-/* Die Titel (JAHRE EXPERTISE, etc.) - Jetzt wie festgenagelt auf einer Linie */
 .hero-stat-title {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -617,7 +612,6 @@
   line-height: 1.3;
 }
 
-/* Die Beschreibungen darunter */
 .hero-stat-desc {
   font-size: 0.72rem;
   text-transform: uppercase; 
@@ -628,7 +622,6 @@
   margin: 0;
 }
 
-/* Mobile Optimierung */
 @media (max-width: 1024px) {
   .hero-stats {
     flex-wrap: wrap;
