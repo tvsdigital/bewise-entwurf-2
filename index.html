@@ -2333,6 +2333,7 @@
     ════════════════════════════════════════════════ -->
 <section id="kontakt" aria-labelledby="kontakt-headline">
   <div class="kontakt-inner">
+    
     <div class="kontakt-info">
       <span class="label reveal">Kontakt</span>
       <h2 class="section-title reveal reveal-delay-1" id="kontakt-headline">
@@ -2343,6 +2344,7 @@
       </p>
 
       <div class="kontakt-detail-list reveal reveal-delay-2" role="list">
+        <!-- Adresse -->
         <div class="kontakt-detail" role="listitem">
           <div class="kontakt-detail-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2356,6 +2358,7 @@
           </div>
         </div>
 
+        <!-- Telefon -->
         <div class="kontakt-detail" role="listitem">
           <div class="kontakt-detail-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2368,6 +2371,7 @@
           </div>
         </div>
 
+        <!-- E-Mail -->
         <div class="kontakt-detail" role="listitem">
           <div class="kontakt-detail-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2381,6 +2385,7 @@
           </div>
         </div>
 
+        <!-- Erreichbarkeit -->
         <div class="kontakt-detail" role="listitem">
           <div class="kontakt-detail-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2394,64 +2399,66 @@
           </div>
         </div>
       </div>
+    </div> <!-- HIER WAR DER FEHLER: Dieses schließende Div saß zu weit unten -->
 
-      <div class="kontakt-form reveal reveal-delay-1">
-        <h3 class="form-title">Schreiben Sie uns.</h3>
-        <p class="form-subtitle">Wir antworten innerhalb von 24 Stunden.</p>
+    <!-- Formspree Integration -->
+    <div class="kontakt-form reveal reveal-delay-1">
+      <h3 class="form-title">Schreiben Sie uns.</h3>
+      <p class="form-subtitle">Wir antworten innerhalb von 24 Stunden.</p>
 
-        <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" id="contactForm" novalidate aria-label="Kontaktformular">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firstName" class="form-label">Vorname *</label>
-              <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Max" required autocomplete="given-name" />
-            </div>
-            <div class="form-group">
-              <label for="lastName" class="form-label">Nachname *</label>
-              <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Mustermann" required autocomplete="family-name" />
-            </div>
+      <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" id="contactForm" novalidate aria-label="Kontaktformular">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName" class="form-label">Vorname *</label>
+            <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Max" required autocomplete="given-name" />
           </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email" class="form-label">E-Mail *</label>
-              <input type="email" id="email" name="email" class="form-input" placeholder="max@muster.de" required autocomplete="email" />
-            </div>
-            <div class="form-group">
-              <label for="phone" class="form-label">Telefon</label>
-              <input type="tel" id="phone" name="phone" class="form-input" placeholder="+49 40 ..." autocomplete="tel" />
-            </div>
+          <div class="form-group">
+            <label for="lastName" class="form-label">Nachname *</label>
+            <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Mustermann" required autocomplete="family-name" />
           </div>
+        </div>
 
-          <div class="form-group full">
-            <label for="interest" class="form-label">Ich bin *</label>
-            <select id="interest" name="interest" class="form-select" required>
-              <option value="" disabled selected>Bitte wählen …</option>
-              <option value="unternehmen">Unternehmen / Recruiter</option>
-              <option value="bewerber">Bewerber / Kandidat</option>
-              <option value="beides">Beides</option>
-              <option value="sonstiges">Sonstiges</option>
-            </select>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email" class="form-label">E-Mail *</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="max@muster.de" required autocomplete="email" />
           </div>
-
-          <div class="form-group full">
-            <label for="message" class="form-label">Ihre Nachricht *</label>
-            <textarea id="message" name="message" class="form-textarea" placeholder="Wie können wir Ihnen helfen?" required></textarea>
+          <div class="form-group">
+            <label for="phone" class="form-label">Telefon</label>
+            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+49 40 ..." autocomplete="tel" />
           </div>
+        </div>
 
-          <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
-          <input type="hidden" name="_subject" value="Neue Kontaktanfrage – Bewise Recruiting" />
+        <div class="form-group full">
+          <label for="interest" class="form-label">Ich bin *</label>
+          <select id="interest" name="interest" class="form-select" required>
+            <option value="" disabled selected>Bitte wählen …</option>
+            <option value="unternehmen">Unternehmen / Recruiter</option>
+            <option value="bewerber">Bewerber / Kandidat</option>
+            <option value="beides">Beides</option>
+            <option value="sonstiges">Sonstiges</option>
+          </select>
+        </div>
 
-          <p class="form-privacy">
-            Mit dem Absenden stimmen Sie zu, dass Ihre Daten zur Bearbeitung Ihrer Anfrage gemäß unserer
-            <a href="#datenschutz">Datenschutzerklärung</a> verarbeitet werden.
-          </p>
+        <div class="form-group full">
+          <label for="message" class="form-label">Ihre Nachricht *</label>
+          <textarea id="message" name="message" class="form-textarea" placeholder="Wie können wir Ihnen helfen?" required></textarea>
+        </div>
 
-          <button type="submit" class="btn btn-dark" style="width:100%; justify-content:center;">
-            Nachricht senden <span class="arrow" aria-hidden="true">→</span>
-          </button>
-        </form>
-      </div>
+        <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
+        <input type="hidden" name="_subject" value="Neue Kontaktanfrage – Bewise Recruiting" />
+
+        <p class="form-privacy">
+          Mit dem Absenden stimmen Sie zu, dass Ihre Daten zur Bearbeitung Ihrer Anfrage gemäß unserer
+          <a href="#datenschutz">Datenschutzerklärung</a> verarbeitet werden.
+        </p>
+
+        <button type="submit" class="btn btn-dark" style="width:100%; justify-content:center;">
+          Nachricht senden <span class="arrow" aria-hidden="true">→</span>
+        </button>
+      </form>
     </div>
+
   </div>
 </section>
 
