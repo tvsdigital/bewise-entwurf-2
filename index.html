@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <!-- Essential Meta Tags -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark">
+  
+  <!-- SEO Meta Tags -->
   <meta name="description" content="Bewise Recruiting & HR – Ihre Experten für strategisches Recruiting und High-End HR-Management. Wir verbinden exzellente Talente mit zukunftsorientierten Unternehmen." />
   <meta name="keywords" content="Recruiting, HR, Personalberatung, Headhunting, Stellenangebote, Personalvermittlung, HR-Management" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  
+  <!-- Open Graph / Social Media -->
   <meta property="og:title" content="Bewise | Recruiting & HR – Strategisches Personalmanagement" />
   <meta property="og:description" content="Wir verbinden exzellente Talente mit zukunftsorientierten Unternehmen. Effizient, diskret und auf Augenhöhe." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="og-image.jpg" />
+  
+  <!-- Mobile App Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Bewise Recruiting" />
+  
+  <!-- Security & Privacy -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="theme-color" content="#0E0E0C" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="format-detection" content="telephone=no" />
+  
+  <!-- Preload critical resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preload" href="fonts/playfair-display-v37-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/source-serif-4-v7-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  
   <title>Bewise | Recruiting & HR – Strategisches Personalmanagement</title>
 
   <style>
-    /* ─────────────────────────────────────────────────────
-        LOKALE SCHRIFTEN EINBINDEN (@font-face)
-    ───────────────────────────────────────────────────── */
 
-/* --- PLAYFAIR DISPLAY (Überschriften) --- */
 @font-face {
   font-family: 'Playfair Display';
   font-style: normal;
@@ -200,11 +221,73 @@
     }
 
     /* ─────────────────────────────────────────────────────
-       BUTTONS
+       INITIATIV CTA SECTION
     ───────────────────────────────────────────────────── */
+    .initiativ-cta {
+      max-width: 1200px;
+      margin: 64px auto;
+      padding: 48px 56px;
+      background-color: #0d0d0b;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+    }
+
+    .initiativ-cta > div {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .initiativ-cta h3 {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      line-height: 1.25;
+      color: #ffffff;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .initiativ-cta h3 span {
+      font-style: italic;
+      font-weight: 300;
+      color: #e5dfd5;
+    }
+
+    .initiativ-cta .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: #e5dfd5;
+      color: #0d0d0b;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 100px;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      min-height: 44px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .initiativ-cta .btn-pill:hover {
+      background-color: #c9b99a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.2);
+    }
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       padding: 15px 34px;
       font-family: var(--font-body);
@@ -216,6 +299,11 @@
       border: none;
       transition: var(--transition);
       white-space: nowrap;
+      min-height: 44px;
+      min-width: 44px;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .btn-primary {
@@ -369,20 +457,87 @@
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
-      padding: 6px;
+      padding: 8px;
+      background: none;
+      border: none;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+      -webkit-tap-highlight-color: transparent;
     }
+
+    .nav-hamburger:hover {
+      opacity: 0.8;
+    }
+
     .nav-hamburger span {
       display: block;
       width: 24px;
-      height: 1.5px;
+      height: 2px;
       background: var(--white);
-      transition: var(--transition);
+      transition: all var(--transition-fast);
+      transform-origin: center;
     }
-    #navbar.scrolled .nav-hamburger span { background: var(--black); }
+
+    .nav-hamburger.open span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-hamburger.open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    #navbar.scrolled .nav-hamburger span {
+      background: var(--black);
+    }
 
     /* ─────────────────────────────────────────────────────
-       MOBILE MENU
+       MOBILE MENU IMPROVEMENTS
     ───────────────────────────────────────────────────── */
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      padding: 16px 0;
+      display: block;
+      transition: color var(--transition-fast);
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a:active {
+      color: var(--cream);
+    }
+
+    .mobile-close {
+      position: absolute;
+      top: 24px; 
+      right: 6vw;
+      font-size: 2rem;
+      color: var(--white);
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+      padding: 8px;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color var(--transition-fast);
+    }
+
+    .mobile-close:hover {
+      color: var(--cream);
+    }
     .mobile-menu {
       display: none;
       position: fixed;
@@ -1401,12 +1556,37 @@
       transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
       appearance: none;
       -webkit-appearance: none;
+      -moz-appearance: none;
+      min-height: 44px;
     }
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
+
+    .form-input:focus, 
+    .form-select:focus, 
+    .form-textarea:focus {
       border-color: var(--cream-dark);
-      box-shadow: 0 0 0 3px rgba(201,185,154,0.18);
+      box-shadow: 0 0 0 3px rgba(201, 185, 154, 0.18);
     }
-    .form-textarea { resize: vertical; min-height: 120px; }
+
+    .form-textarea { 
+      resize: vertical; 
+      min-height: 120px; 
+      font-family: var(--font-body);
+    }
+
+    /* Remove default number input spinners */
+    .form-input::-webkit-outer-spin-button,
+    .form-input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Select dropdown styling */
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230E0E0C' d='M1.5 4.5l4.5 4.5 4.5-4.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+    }
 
     .form-privacy {
       font-size: 0.78rem;
@@ -1417,8 +1597,58 @@
     .form-privacy a { color: var(--black); text-decoration: underline; text-underline-offset: 2px; }
 
     /* ─────────────────────────────────────────────────────
-       FOOTER
+       SCROLL BEHAVIOR & SMOOTH SCROLL
     ───────────────────────────────────────────────────── */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    @supports not (scroll-behavior: smooth) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* ─────────────────────────────────────────────────────
+       PRINT STYLES
+    ───────────────────────────────────────────────────── */
+    @media print {
+      /* Hide non-essential elements */
+      nav, .nav-hamburger, #cookieBanner, #cookieSettingsModal,
+      .mobile-menu, .cta-section, .initiativ-cta,
+      [aria-hidden="true"], .no-print {
+        display: none !important;
+      }
+
+      /* Body & Text */
+      body {
+        background: white;
+        color: #000;
+        font-size: 12pt;
+        line-height: 1.5;
+      }
+
+      /* Links */
+      a {
+        color: #000;
+        text-decoration: underline;
+      }
+
+      /* Spacing */
+      h1, h2, h3 { margin-top: 0.5in; page-break-after: avoid; }
+      p { orphans: 3; widows: 3; page-break-inside: avoid; }
+
+      /* Images */
+      img { max-width: 100%; page-break-inside: avoid; }
+
+      /* Remove backgrounds */
+      * {
+        background-color: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+      }
+    }
     footer {
       background: var(--black);
       padding: 72px 6vw 40px;
@@ -1446,7 +1676,7 @@
     .footer-logo-mark {
       width: 36px;
       height: 36px;
-      background: transparent
+      background: transparent;
       border-radius: 0px;
       display: flex;
       align-items: center;
@@ -1454,7 +1684,7 @@
       font-family: var(--font-display);
       font-size: 1.15rem;
       font-weight: 600;
-      color: transparent
+      color: transparent;
     }
     .footer-logo-name {
       font-family: var(--font-display);
@@ -1535,8 +1765,61 @@
     .footer-legal a:hover { color: rgba(250,250,248,0.7); }
 
     /* ─────────────────────────────────────────────────────
-       KEYFRAMES
+       FOCUS & KEYBOARD NAVIGATION (Accessibility)
     ───────────────────────────────────────────────────── */
+    :focus-visible {
+      outline: 2px solid var(--cream);
+      outline-offset: 2px;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--cream);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* Better focus for buttons */
+    .btn:focus-visible {
+      outline: 2px solid var(--black);
+      outline-offset: 3px;
+    }
+
+    .btn-primary:focus-visible {
+      outline: 2px solid var(--black);
+    }
+
+    /* High contrast mode support */
+    @media (prefers-contrast: more) {
+      .btn {
+        border: 1px solid currentColor;
+      }
+
+      .section-subtitle {
+        font-weight: 400;
+      }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* Dark mode support (if OS has it) */
+    @media (prefers-color-scheme: dark) {
+      /* Already dark-friendly, but can add extra adjustments if needed */
+    }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(28px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -1565,38 +1848,228 @@
       .footer-top { grid-template-columns: 1fr 1fr; }
     }
 
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-stat-item { flex: 0 0 calc(50% - 8px); }
+      .hero-stats { gap: 24px 16px; }
+    }
+
     @media (max-width: 768px) {
+      /* Navigation */
       .nav-links, .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
       .mobile-menu { display: flex; }
-
-      .hero-content { padding: 100px 6vw 60px; }
+      
+      /* Hero Section */
+      .hero-content { padding: 80px 6vw 50px; }
       .hero-image-block { display: none; }
-      .hero-stats { flex-wrap: wrap; gap: 28px; }
+      .hero-headline { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 20px; }
+      .hero-sub { font-size: 1rem; margin-bottom: 28px; }
+      .hero-ctas { gap: 12px; }
+      .hero-stats { flex-direction: column; gap: 24px; width: 100%; margin-left: 0; margin-right: 0; margin-bottom: 40px; }
+      .hero-stat-item { flex: 1; }
       .scroll-indicator { display: none; }
 
+      /* Grids */
+      .about-grid,
+      .bewerber-grid,
+      .kontakt-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-image-wrap { max-width: 100%; }
+      .bewerber-image-stack { max-width: 100%; order: -1; }
       .services-grid,
       .process-steps,
       .testimonials-grid { grid-template-columns: 1fr; }
 
-      .companies-cta-bar { padding: 40px 32px; flex-direction: column; text-align: center; }
+      /* CTA Bar */
+      .companies-cta-bar { 
+        padding: 32px 24px; 
+        flex-direction: column; 
+        text-align: center; 
+        gap: 24px;
+        border-radius: var(--radius-md);
+      }
+      .cta-bar-title { font-size: 1.3rem; }
 
+      /* Forms */
       .form-row { grid-template-columns: 1fr; }
-      .kontakt-form { padding: 36px 28px; }
+      .kontakt-form { padding: 28px 20px; }
+      .form-input, .form-select, .form-textarea { font-size: 16px; }
 
-      .footer-top { grid-template-columns: 1fr; gap: 36px; }
-
-      #cookie-banner { padding: 24px; bottom: 12px; left: 12px; right: 12px; }
+      /* Footer */
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      
+      /* Cookie Banner */
+      #cookieBanner { 
+        padding: 16px; 
+        bottom: 0; 
+        left: 0; 
+        right: 0; 
+      }
+      #cookieBanner > div { 
+        flex-direction: column; 
+        align-items: stretch; 
+      }
+      #cookieBanner button { 
+        width: 100%; 
+        padding: 12px 16px;
+        font-size: 0.85rem;
+      }
+      
+      /* Headers */
       .leistungen-header { flex-direction: column; align-items: flex-start; }
       .jobs-header { flex-direction: column; align-items: flex-start; }
-      .about-image-accent { right: -16px; bottom: -16px; }
+      .companies-header { text-align: left; }
+      .testimonials-header { text-align: left; }
+      
+      /* Images */
+      .about-image-accent { right: -12px; bottom: -12px; width: 50%; }
+      .bewerber-img-float { right: 0; bottom: 0; width: 45%; }
+    }
+
+    @media (max-width: 640px) {
+      body { font-size: 15px; }
+      
+      .section-title { font-size: clamp(1.5rem, 4vw, 2.2rem); }
+      .page-title { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+      .label { font-size: 0.65rem; margin-bottom: 10px; }
+      
+      /* Spacing adjustments */
+      #unternehmen, #leistungen, #fur-unternehmen, #bewerber, 
+      #stellenangebote, #testimonials, #kontakt { padding: 80px 5vw; }
+      
+      .btn { 
+        padding: 13px 28px; 
+        font-size: 0.82rem; 
+        min-height: 44px;
+        min-width: 44px;
+      }
+      .btn-outline, .btn-ghost { padding: 12px 26px; }
+      
+      /* Navigation */
+      #navbar { padding: 16px 5vw; }
+      #navbar.scrolled { padding: 12px 5vw; }
+      
+      /* Hero */
+      .hero-eyebrow { margin-bottom: 24px; }
+      .hero-text-block { margin-top: auto; margin-bottom: auto; }
+      .hero-content { padding: 70px 5vw 40px; }
+      
+      /* About section */
+      .about-text { gap: 20px; }
+      .about-text p { font-size: 0.95rem; }
+      
+      /* Service cards */
+      .service-card { padding: 32px 24px; gap: 16px; }
+      .service-title { font-size: 1.25rem; }
+      .service-desc { font-size: 0.85rem; }
+      
+      /* Process steps */
+      .process-step { padding: 28px 20px; }
+      .step-num { font-size: 2.5rem; }
+      .step-title { font-size: 1.1rem; }
+      
+      /* Job items */
+      .job-item { padding: 20px 16px; flex-direction: column; align-items: flex-start; }
+      .job-badge { align-self: flex-start; margin-top: 8px; }
+      
+      /* Contact form */
+      .form-label { font-size: 0.73rem; }
+      .kontakt-detail-label { font-size: 0.70rem; }
+      
+      /* Initiativ CTA */
+      .initiativ-cta { margin: 40px auto; padding: 32px 20px; }
     }
 
     @media (max-width: 480px) {
-      .hero-ctas { flex-direction: column; }
+      /* Padding and margins */
+      #unternehmen, #leistungen, #fur-unternehmen, #bewerber, 
+      #stellenangebote, #testimonials, #kontakt { padding: 60px 4vw; }
+      main { padding: 130px 4vw 60px; }
+      
+      .section-title { font-size: clamp(1.3rem, 3.5vw, 1.8rem); }
+      .page-title { font-size: clamp(1.5rem, 3.5vw, 2rem); }
+      
+      /* Navigation fixes */
+      #navbar { padding: 14px 4vw; }
+      
+      /* Hero improvements */
+      .hero-content { padding: 60px 4vw 30px; }
+      .hero-headline { font-size: clamp(1.6rem, 3.5vw, 2.5rem); margin-bottom: 16px; }
+      .hero-sub { font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+      .hero-ctas { flex-direction: column; width: 100%; }
       .hero-ctas .btn { width: 100%; justify-content: center; }
-      .cookie-modal-box { padding: 28px 24px; }
-      .cookie-modal-actions { flex-direction: column; }
+      .hero-stats { padding-top: 24px; margin-bottom: 32px; }
+      .hero-stat-item { padding: 0 8px; }
+      .hero-stat-title { font-size: 0.70rem; }
+      .hero-stat-desc { font-size: 0.68rem; max-width: 100%; }
+      
+      /* About section */
+      .about-text .section-title { margin-top: 0; }
+      .about-image-accent { right: -8px; bottom: -8px; width: 55%; }
+      .about-badge { left: -10px; top: 20px; padding: 12px 16px; }
+      .about-badge-num { font-size: 1.5rem; }
+      .about-badge-text { font-size: 0.65rem; }
+      
+      /* Service cards */
+      .service-card { padding: 24px 16px; }
+      .service-number { font-size: 0.80rem; }
+      .service-icon { width: 40px; height: 40px; font-size: 1.2rem; }
+      .service-title { font-size: 1.1rem; }
+      .service-desc { font-size: 0.82rem; }
+      
+      /* Process steps */
+      .process-step { padding: 24px 16px; }
+      .step-num { font-size: 2rem; }
+      .step-title { font-size: 1rem; }
+      .step-desc { font-size: 0.82rem; }
+      
+      /* Testimonials */
+      .testimonial-card { padding: 28px 20px; }
+      .testimonial-quote { font-size: 2.5rem; }
+      .testimonial-text { font-size: 1rem; }
+      .testimonial-avatar { width: 36px; height: 36px; }
+      .testimonial-name { font-size: 0.82rem; }
+      .testimonial-role { font-size: 0.72rem; }
+      
+      /* Contact form */
+      .kontakt-form { padding: 24px 16px; }
+      .form-title { font-size: 1.4rem; }
+      .form-input, .form-select, .form-textarea { padding: 12px 14px; }
+      .form-textarea { min-height: 100px; }
+      
+      /* Cookie Banner */
+      #cookieBanner p { font-size: 0.85rem; }
+      #cookieBanner button { 
+        padding: 11px 14px; 
+        font-size: 0.80rem;
+      }
+      
+      /* Modal */
+      #cookieSettingsModal { padding: 12px; }
+      #cookieSettingsModal > div { padding: 24px 16px; }
+      #cookieSettingsModal h2 { font-size: 1.4rem; }
+      
+      /* Initiativ CTA */
+      .initiativ-cta { margin: 32px auto; padding: 24px 16px; }
+      .initiativ-cta > div { flex: 1; min-width: 100%; }
+      .initiativ-cta h3 { font-size: 1.2rem; margin: 0 0 16px 0; }
+      .initiativ-cta a { width: 100%; text-align: center; }
+      
+      /* Job listings */
+      .job-item { padding: 16px 12px; }
+      .job-title { font-size: 1rem; }
+      .job-meta-item { font-size: 0.73rem; }
+      
+      /* Footer */
+      footer { padding: 48px 4vw 24px; }
+      .footer-copy { font-size: 0.73rem; }
+      .footer-links a { font-size: 0.73rem; }
+      .footer-tagline { font-size: 0.80rem; line-height: 1.6; max-width: 100%; }
+      
+      /* Ticker */
+      .ticker-item { padding: 0 16px; font-size: 0.68rem; }
     }
   </style>
 </head>
@@ -1651,6 +2124,9 @@
       src="backround.jpg"
       alt="Professionelles Business-Meeting – strategisches Recruiting"
       loading="eager"
+      decoding="async"
+      width="1920"
+      height="1080"
     />
   </div>
 
@@ -1769,12 +2245,18 @@
             src="gruppe.png"
             alt="Bewise Team – Experten für strategisches Recruiting und HR-Management"
             loading="lazy"
+            decoding="async"
+            width="600"
+            height="750"
           />
           <img
             class="about-image-accent"
             src="Frau-Website.png"
             alt="Professionelles Beratungsgespräch – diskret und auf Augenhöhe"
             loading="lazy"
+            decoding="async"
+            width="300"
+            height="300"
           />
           <div class="about-badge">
             <div class="about-badge-num">10+</div>
@@ -1983,12 +2465,18 @@
             src="bewerbung.png"
             alt="Karriereberatung bei Bewise – professionell und persönlich"
             loading="lazy"
+            decoding="async"
+            width="480"
+            height="640"
           />
           <img
             class="bewerber-img-float"
             src="Frau-Mann-Website.png"
             alt="Erfolgreicher Bewerber nach Beratungsgespräch"
             loading="lazy"
+            decoding="async"
+            width="400"
+            height="330"
           />
         </div>
       </div>
@@ -2078,21 +2566,18 @@
           </div>
     </section>
 
-                <div class="initiativ-cta reveal" style="max-width: 1200px; margin: 64px auto; padding: 48px 56px; background-color: #0d0d0b; border-radius: 24px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; box-sizing: border-box;">
-  
-  <div style="flex: 1; min-width: 300px;">
-    <h3 style="font-family: var(--font-display); font-size: 2.2rem; line-height: 1.25; color: #ffffff; font-weight: 400; margin: 0; letter-spacing: -0.02em;">
-      Keine passende Position dabei? <br>
-      <span style="font-style: italic; font-weight: 300; color: #e5dfd5;">Initiativ</span> bewerben.
+                <div class="initiativ-cta reveal">
+  <div>
+    <h3>Keine passende Position dabei? <br>
+      <span>Initiativ</span> bewerben.
     </h3>
   </div>
 
   <div>
-    <a href="#kontakt" class="btn-pill" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: #e5dfd5; color: #0d0d0b; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500; text-decoration: none; padding: 16px 32px; border-radius: 100px; transition: transform 0.2s ease, background-color 0.2s ease; white-space: nowrap; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
-      Jetzt bewerben <span style="font-size: 1rem; line-height: 1;">→</span>
+    <a href="#kontakt" class="btn-pill">
+      Jetzt bewerben <span>→</span>
     </a>
   </div>
-
 </div>
 
     <!-- ═══════════════════════════════════════════════
@@ -2190,7 +2675,7 @@
           </div>
           <div>
             <div class="kontakt-detail-label">Telefon</div>
-            <div class="kontakt-detail-text"><a href="tel:+4940123456789">+49 (0) 40 123 456 789</a></div>
+            <div class="kontakt-detail-text"><a href="tel:+4917732599600" title="Anrufen">+49 177 32599600</a></div>
           </div>
         </div>
 
@@ -2273,7 +2758,7 @@
 
         <p class="form-privacy">
           Mit dem Absenden stimmen Sie zu, dass Ihre Daten zur Bearbeitung Ihrer Anfrage gemäß unserer
-          <a href="#datenschutz">Datenschutzerklärung</a> verarbeitet werden.
+          <a href="datenschutz.html">Datenschutzerklärung</a> verarbeitet werden. Sie akzeptieren die Verarbeitung durch Zoho Recruit gemäß Art. 6 Abs. 1 lit. b DSGVO.
         </p>
 
         <button type="submit" class="btn btn-dark" style="width:100%; justify-content:center;">
@@ -2348,9 +2833,9 @@
         <nav aria-label="Rechtliche Links">
           <h4 class="footer-col-title">Rechtliches</h4>
           <ul class="footer-links" role="list">
-            <li><a href="impressum.html" id="impressum">Impressum</a></li>
-            <li><a href="datenschutz.html" id="datenschutz">Datenschutz</a></li>
-            <li><a href="#" id="cookieSettingsLink">Cookie-Einstellungen</a></li>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+            <li><a href="#" id="cookieSettingsLink" onclick="showCookieSettings(); return false;">Cookie-Einstellungen</a></li>
           </ul>
         </nav>
       </div>
@@ -2366,19 +2851,87 @@
   </footer>
 
   <!-- ═══════════════════════════════════════════════
+       COOKIE-BANNER & DSGVO MODAL
+  ════════════════════════════════════════════════ -->
+  <div id="cookieBanner" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: var(--black); border-top: 1px solid var(--cream-dark); padding: 24px 6vw; display: none;">
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 300px;">
+        <p style="font-size: 0.9rem; color: rgba(250, 250, 248, 0.85); line-height: 1.6; margin: 0;">
+          <strong>Datenschutz & Cookies:</strong> Diese Website verwendet technisch notwendige Cookies für Sicherheit und Funktionalität. Weitere Informationen finden Sie in unserer <a href="datenschutz.html" style="color: var(--cream); text-decoration: underline;">Datenschutzerklärung</a>.
+        </p>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <button id="cookieAccept" style="padding: 10px 22px; background: var(--cream); color: var(--black); border: none; border-radius: var(--radius-xl); font-weight: 500; cursor: pointer; font-size: 0.85rem; transition: background 0.2s;" onmouseover="this.style.background='var(--cream-dark)'" onmouseout="this.style.background='var(--cream)'">Alle akzeptieren</button>
+        <button id="cookieReject" style="padding: 10px 22px; background: transparent; color: rgba(250, 250, 248, 0.8); border: 1px solid rgba(250, 250, 248, 0.3); border-radius: var(--radius-xl); font-weight: 500; cursor: pointer; font-size: 0.85rem; transition: all 0.2s;" onmouseover="this.style.borderColor='rgba(250, 250, 248, 0.6)'; this.style.color='var(--white)'" onmouseout="this.style.borderColor='rgba(250, 250, 248, 0.3)'; this.style.color='rgba(250, 250, 248, 0.8)'">Nur notwendig</button>
+        <button id="cookieSettings" style="padding: 10px 22px; background: transparent; color: rgba(250, 250, 248, 0.8); border: 1px solid rgba(250, 250, 248, 0.3); border-radius: var(--radius-xl); font-weight: 500; cursor: pointer; font-size: 0.85rem; transition: all 0.2s;" onclick="showCookieSettings(); return false;" onmouseover="this.style.borderColor='rgba(250, 250, 248, 0.6)'; this.style.color='var(--white)'" onmouseout="this.style.borderColor='rgba(250, 250, 248, 0.3)'; this.style.color='rgba(250, 250, 248, 0.8)'">Einstellungen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cookie Settings Modal -->
+  <div id="cookieSettingsModal" style="position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: var(--white); border-radius: var(--radius-lg); max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 40px;">
+      <h2 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 20px; color: var(--black);">Cookie-Einstellungen</h2>
+      
+      <div style="margin-bottom: 28px;">
+        <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; color: var(--black);">Notwendige Cookies (erforderlich)</h3>
+        <p style="font-size: 0.9rem; color: var(--grey-text); line-height: 1.6; margin-bottom: 10px;">
+          Technisch erforderlich für Sicherheit, Datenverschlüsselung und Formularverarbeitung. Diese können nicht deaktiviert werden.
+        </p>
+        <label style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--black);">
+          <input type="checkbox" checked disabled style="width: 18px; height: 18px; cursor: not-allowed;" />
+          <span>Essenzielle Funktionen</span>
+        </label>
+      </div>
+
+      <div style="margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--grey-light);">
+        <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; color: var(--black);">Analytische & Marketing Cookies</h3>
+        <p style="font-size: 0.9rem; color: var(--grey-text); line-height: 1.6; margin-bottom: 10px;">
+          Derzeit nicht in Verwendung. Ihre Daten werden nicht zu Marketing- oder Tracking-Zwecken verarbeitet.
+        </p>
+      </div>
+
+      <p style="font-size: 0.85rem; color: var(--grey-text); margin-bottom: 20px; line-height: 1.6;">
+        Detaillierte Informationen zur Datenverarbeitung finden Sie in unserer <a href="datenschutz.html" style="color: var(--black); text-decoration: underline; font-weight: 500;">Datenschutzerklärung</a>.
+      </p>
+
+      <div style="display: flex; gap: 12px; justify-content: flex-end;">
+        <button onclick="closeCookieSettings()" style="padding: 12px 28px; background: transparent; color: var(--black); border: 1px solid var(--grey-mid); border-radius: var(--radius-xl); font-weight: 500; cursor: pointer; font-size: 0.9rem;">Schließen</button>
+        <button onclick="acceptCookies()" style="padding: 12px 28px; background: var(--cream); color: var(--black); border: none; border-radius: var(--radius-xl); font-weight: 500; cursor: pointer; font-size: 0.9rem;">Speichern</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
        JAVASCRIPT
   ════════════════════════════════════════════════ -->
   <script>
-    /* ─── Navbar scroll behavior ─── */
+    /* ─── Navbar scroll behavior with smooth transition ─── */
     const navbar = document.getElementById('navbar');
+    let lastScrollY = 0;
+    let ticking = false;
+
+    function updateNavbar() {
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      ticking = false;
+    }
+
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 60);
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(updateNavbar);
+        ticking = true;
+      }
     }, { passive: true });
 
-    /* ─── Mobile menu ─── */
+    /* ─── Mobile menu toggle ─── */
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
-    const menuClose  = document.getElementById('menuClose');
+    const menuClose = document.getElementById('menuClose');
 
     function openMobileMenu() {
       mobileMenu.classList.add('open');
@@ -2386,6 +2939,7 @@
       mobileMenu.removeAttribute('aria-hidden');
       menuToggle.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = '15px'; // Prevent layout shift from scrollbar
     }
 
     function closeMobileMenu() {
@@ -2394,12 +2948,26 @@
       mobileMenu.setAttribute('aria-hidden', 'true');
       menuToggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     }
 
-    menuToggle.addEventListener('click', openMobileMenu);
-    menuClose.addEventListener('click', closeMobileMenu);
+    menuToggle?.addEventListener('click', openMobileMenu);
+    menuClose?.addEventListener('click', closeMobileMenu);
 
-    /* ─── Scroll reveal ─── */
+    // Close menu when clicking on a link
+    const mobileLinks = mobileMenu?.querySelectorAll('a');
+    mobileLinks?.forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) {
+        closeMobileMenu();
+      }
+    });
+
+    /* ─── Scroll reveal animation ─── */
     const reveals = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -2408,27 +2976,129 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
     reveals.forEach(el => revealObserver.observe(el));
 
-
-    /* ─── Contact form ─── */
+    /* ─── Contact form handling ─── */
     const form = document.getElementById('contactForm');
     if (form) {
       form.addEventListener('submit', async (e) => {
-        // Only intercept if action is placeholder
-        if (form.action.includes('YOUR_ZOHO_ID')) {
+        if (form.action.includes('YOUR_ZOHO_ID') || form.action.includes('Platzhalter')) {
           e.preventDefault();
           const btn = form.querySelector('[type=submit]');
           btn.textContent = '✓ Nachricht gesendet!';
           btn.style.background = '#2d5a27';
           btn.disabled = true;
+          setTimeout(() => {
+            btn.textContent = 'Nachricht senden →';
+            btn.style.background = '';
+            btn.disabled = false;
+            form.reset();
+          }, 3000);
           return;
         }
       });
     }
 
+    /* ─── DSGVO Cookie Banner Management ─── */
+    function initCookieBanner() {
+      const banner = document.getElementById('cookieBanner');
+      const cookieConsent = localStorage.getItem('bewise-cookie-consent');
+      
+      if (!cookieConsent && banner) {
+        setTimeout(() => { 
+          banner.style.display = 'block';
+          banner.style.animation = 'slideUp 0.4s ease-out';
+        }, 2500);
+      }
+    }
+
+    function acceptCookies() {
+      localStorage.setItem('bewise-cookie-consent', 'accepted');
+      const banner = document.getElementById('cookieBanner');
+      if (banner) banner.style.display = 'none';
+      closeCookieSettings();
+    }
+
+    function rejectCookies() {
+      localStorage.setItem('bewise-cookie-consent', 'rejected');
+      const banner = document.getElementById('cookieBanner');
+      if (banner) banner.style.display = 'none';
+    }
+
+    function showCookieSettings() {
+      const modal = document.getElementById('cookieSettingsModal');
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        document.body.style.paddingRight = '15px';
+      }
+    }
+
+    function closeCookieSettings() {
+      const modal = document.getElementById('cookieSettingsModal');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+      }
+    }
+
+    // Event Listeners for Cookie Banner
+    document.getElementById('cookieAccept')?.addEventListener('click', acceptCookies);
+    document.getElementById('cookieReject')?.addEventListener('click', rejectCookies);
+    
+    // Close Modal when clicking outside
+    document.getElementById('cookieSettingsModal')?.addEventListener('click', (e) => {
+      if (e.target === document.getElementById('cookieSettingsModal')) {
+        closeCookieSettings();
+      }
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeCookieSettings();
+      }
+    });
+
+    // Initialize banner on page load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCookieBanner);
+    } else {
+      initCookieBanner();
+    }
+
+    /* ─── Smooth scroll for anchor links ─── */
+    document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href !== '#!' && !href.includes('cookieSettings')) {
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+            closeMobileMenu();
+          }
+        }
+      });
+    });
+
   </script>
+
+  <!-- Add CSS animation for cookie banner slide-up -->
+  <style>
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </body>
 </html>
