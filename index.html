@@ -130,8 +130,8 @@
       --grey-light:  #F0EDE8;
       --grey-mid:    #C8C4BC;
       --grey-text:   #7A7670;
-      --glass-bg:    rgba(250, 250, 248, 0.72);
-      --glass-border:rgba(232, 223, 208, 0.45);
+      --glass-bg:    rgba(14, 14, 12, 0.9);
+      --glass-border:rgba(232, 223, 208, 0.15);
       --shadow-soft: 0 8px 40px rgba(14,14,12,0.08);
       --shadow-card: 0 2px 24px rgba(14,14,12,0.07);
       --shadow-hero: 0 32px 80px rgba(14,14,12,0.18);
@@ -153,9 +153,7 @@
     ───────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Fix: Grid-Spalten dürfen nicht durch die Bildgröße aufgebläht werden
-       (Standard-min-width:auto von Grid-Items orientiert sich an der
-       intrinsischen Bildbreite und sprengt sonst die mobile Breite) */
+    /* Fix: Grid-Spalten dürfen nicht durch die Bildgröße aufgebläht werden */
     .about-grid > *,
     .bewerber-grid > *,
     .kontakt-inner > *,
@@ -372,10 +370,10 @@
     .btn:hover .arrow { transform: translateX(4px); }
 
     /* ─────────────────────────────────────────────────────
-       NAVIGATION
+       NAVIGATION (Fixed/Sticky overall)
     ───────────────────────────────────────────────────── */
     #navbar {
-      position: fixed;
+      position: fixed !important;
       top: 0; left: 0; right: 0;
       z-index: 1000;
       padding: 24px 6vw;
@@ -383,6 +381,10 @@
       align-items: center;
       justify-content: space-between;
       transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
+      background: rgba(14, 14, 12, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(232, 223, 208, 0.08);
     }
 
     #navbar.scrolled {
@@ -395,34 +397,33 @@
     }
 
     .nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
+    .nav-logo-img {
+      height: 48px;        
+      width: auto;         
+      object-fit: contain; 
+      display: block;      
+    }
 
-.nav-logo-img {
-  height: 48px;        
-  width: auto;         
-  object-fit: contain; 
-  display: block;      
-}
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
 
-.nav-logo-text {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: var(--white);
-  transition: color var(--transition);
-  white-space: nowrap;
-}
-
-.nav-logo-text span {
-  font-weight: 300;
-  opacity: 0.7;
-  font-size: 0.9rem;
-}
+    .nav-logo-text span {
+      font-weight: 300;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
     #navbar.scrolled .nav-logo-text { color: var(--black); }
 
     .nav-links {
@@ -573,268 +574,254 @@
       opacity: 1;
       pointer-events: all;
     }
-    .mobile-menu a {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: var(--white);
-      letter-spacing: 0.02em;
-    }
-    .mobile-menu a:hover { color: var(--cream); }
-    .mobile-close {
-      position: absolute;
-      top: 24px; right: 6vw;
-      font-size: 2rem;
-      color: var(--white);
-      cursor: pointer;
-      background: none;
-      border: none;
-      line-height: 1;
-    }
 
     /* ─────────────────────────────────────────────────────
        HERO SECTION
     ───────────────────────────────────────────────────── */
-#hero {
-  position: relative;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Geändert: Startet oben, damit flex-grow sauber arbeitet */
-  align-items: flex-start;
-  overflow: hidden;
-  background: var(--black, #0e0e0c);
-  color: var(--white, #fafaf8);
-}
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      overflow: hidden;
+      background: var(--black, #0e0e0c);
+      color: var(--white, #fafaf8);
+    }
 
-/* Hintergrund-Ebenen */
-.hero-bg, 
-.hero-lines, 
-.hero-image-block {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%; /* Fixiert die Höhe des Bildes fest an die 100svh des Elternelements */
-  z-index: 0; 
-  pointer-events: none;
-}
+    /* Hintergrund-Ebenen */
+    .hero-bg, 
+    .hero-image-block {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0; 
+      pointer-events: none;
+    }
 
-.hero-bg {
-  background:
-    radial-gradient(ellipse 80% 60% at 65% 40%, rgba(201,185,154,0.12) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 80% at 20% 80%, rgba(232,223,208,0.07) 0%, transparent 55%),
-    linear-gradient(165deg, #1a1a18 0%, #0E0E0C 55%, #16140F 100%);
-}
+    .hero-bg {
+      background:
+        radial-gradient(ellipse 80% 60% at 65% 40%, rgba(201,185,154,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 80% at 20% 80%, rgba(232,223,208,0.07) 0%, transparent 55%),
+        linear-gradient(165deg, #1a1a18 0%, #0E0E0C 55%, #16140F 100%);
+    }
 
-/* Geometrische Linien */
-.hero-lines::before,
-.hero-lines::after {
-  content: '';
-  position: absolute;
-  width: 1px;
-  height: 130%;
-  background: linear-gradient(to bottom, transparent, rgba(232,223,208,0.15) 30%, rgba(232,223,208,0.08) 70%, transparent);
-  transform: rotate(8deg);
-}
-.hero-lines::before { top: -10%; right: 10%; }
-.hero-lines::after { top: -5%; right: 22%; opacity: 0.5; }
+    /* Geometrische Linien */
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-lines::before,
+    .hero-lines::after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 130%;
+      background: linear-gradient(to bottom, transparent, rgba(232,223,208,0.15) 30%, rgba(232,223,208,0.08) 70%, transparent);
+      transform: rotate(8deg);
+    }
+    .hero-lines::before { top: -10%; right: 10%; }
+    .hero-lines::after { top: -5%; right: 22%; opacity: 0.5; }
 
-/* Bild-Bereich */
-.hero-image-block {
-  left: 0;
-  width: 100%;
-}
-.hero-image-block img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  opacity: 0.28;
-  filter: grayscale(40%);
-}
-.hero-image-block::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--black, #0e0e0c) 20%, rgba(14,14,12,0.65) 50%, transparent 100%);
-  z-index: 1;
-}
+    /* Bild-Bereich */
+    .hero-image-block {
+      left: 0;
+      width: 100%;
+    }
+    .hero-image-block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.28;
+      filter: grayscale(40%);
+    }
+    .hero-image-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--black, #0e0e0c) 20%, rgba(14,14,12,0.65) 50%, transparent 100%);
+      z-index: 1;
+    }
 
-/* Content-Bereich */
-.hero-content {
-  position: relative;
-  z-index: 2; 
-  padding: 120px 6vw 0px; /* Padding unten auf 0 gesetzt */
-  max-width: 820px;
-  width: 100%;
-  
-  /* Flexbox-Magic für die innere Verteilung */
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1; /* Füllt den Raum bis zu den Stats vollkommen aus */
-}
+    /* Content-Bereich */
+    .hero-content {
+      position: relative;
+      z-index: 2; 
+      padding: 130px 6vw 0px;
+      max-width: 820px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
 
-.hero-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 0; /* Margin entfernt, Zentrierung übernimmt */
-}
-.hero-eyebrow-line {
-  width: 40px;
-  height: 1px;
-  background: var(--cream, #e8dfd0);
-}
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0;
+    }
+    .hero-eyebrow-line {
+      width: 40px;
+      height: 1px;
+      background: var(--cream, #e8dfd0);
+    }
 
-/* NEU: Zentriert den Textblock perfekt im leeren Raum */
-.hero-text-block {
-  display: flex;
-  flex-direction: column;
-  margin-top: auto;   /* Drückt den Inhalt von der Eyebrow weg */
-  margin-bottom: auto; /* Drückt den Inhalt von den Stats weg */
-}
+    /* Perfekt ausbalancierter Textblock im leeren Raum */
+    .hero-text-block {
+      display: flex;
+      flex-direction: column;
+      margin-top: auto;   
+      margin-bottom: auto;
+    }
 
-.hero-headline {
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  font-weight: 300;
-  line-height: 1.1;
-  margin-top: 0;
-  margin-bottom: 28px;
-}
-.hero-headline em {
-  font-style: italic;
-  color: var(--cream, #e8dfd0);
-}
+    .hero-headline {
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
 
-.hero-sub {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: rgba(250,250,248,0.7);
-  max-width: 540px;
-  margin-top: 0;
-  margin-bottom: 40px;
-}
+    .hero-sub {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(250,250,248,0.7);
+      max-width: 540px;
+      margin-top: 0;
+      margin-bottom: 40px;
+    }
 
-.hero-ctas {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 0;
-  margin-bottom: 0;
-}
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
 
-.hero-stats {
-  position: relative; 
-  z-index: 2;
-  margin-top: 0; /* 'auto' entfernt, da der Platz von .hero-content aufgeteilt wird */        
-  margin-left: 6vw;
-  margin-right: 6vw;
-  margin-bottom: 48px;
-  padding-top: 32px;
-  border-top: 1px solid rgba(232,223,208,0.15); 
-  
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;  
-  width: calc(100% - 12vw);
-}
+    .hero-stats {
+      position: relative; 
+      z-index: 2;
+      margin-top: 0;        
+      margin-left: 6vw;
+      margin-right: 6vw;
+      margin-bottom: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(232,223,208,0.15); 
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;  
+      width: calc(100% - 12vw);
+    }
 
-/* Restliche Styles für die Stat-Items bleiben unverändert ab hier... */
-.hero-stat-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;      
-  text-align: center;
-  position: relative;
-  box-sizing: border-box;
-  padding: 0 15px;
-}
+    .hero-stat-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;      
+      text-align: center;
+      position: relative;
+      box-sizing: border-box;
+      padding: 0 15px;
+    }
 
-.hero-stat-item:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  right: 0;              
-  top: 10%;
-  height: 80%;
-  width: 1px;
-  background: rgba(232, 223, 208, 0.12); 
-}
+    .hero-stat-item:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;              
+      top: 10%;
+      height: 80%;
+      width: 1px;
+      background: rgba(232, 223, 208, 0.12); 
+    }
 
-.hero-stat-icon-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end; 
-  height: 50px;              
-  margin-bottom: 24px;       
-}
+    .hero-stat-icon-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end; 
+      height: 50px;              
+      margin-bottom: 24px;       
+    }
 
-.hero-stat-number {
-  font-size: 2rem;           
-  color: var(--cream, #e8dfd0);
-  font-weight: 300;
-  line-height: 0.9;         
-  margin: 0;
-}
+    .hero-stat-number {
+      font-size: 2rem;           
+      color: var(--cream, #e8dfd0);
+      font-weight: 300;
+      line-height: 0.9;         
+      margin: 0;
+    }
 
-.hero-stat-icon {
-  color: var(--cream, #e8dfd0); 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 36px;             
-}
+    .hero-stat-icon {
+      color: var(--cream, #e8dfd0); 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 36px;             
+    }
 
-.hero-stat-icon svg {
-  width: 36px;
-  height: 36px;
-  display: block;
-}
+    .hero-stat-icon svg {
+      width: 36px;
+      height: 36px;
+      display: block;
+    }
 
-.hero-stat-title {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--white, #fafaf8); 
-  font-weight: 600;
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
+    .hero-stat-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--white, #fafaf8); 
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
 
-.hero-stat-desc {
-  font-size: 0.72rem;
-  text-transform: uppercase; 
-  letter-spacing: 0.08em;
-  color: rgba(250,250,248,0.4); 
-  line-height: 1.5;
-  max-width: 220px;         
-  margin: 0;
-}
+    .hero-stat-desc {
+      font-size: 0.72rem;
+      text-transform: uppercase; 
+      letter-spacing: 0.08em;
+      color: rgba(250,250,248,0.4); 
+      line-height: 1.5;
+      max-width: 220px;         
+      margin: 0;
+    }
 
-@media (max-width: 1024px) {
-  .hero-stats {
-    flex-wrap: wrap;
-    gap: 40px 0;
-  }
-  .hero-stat-item {
-    flex: 0 0 50%;
-  }
-  .hero-stat-item:not(:last-child)::after {
-    display: none;
-  }
-}
+    @media (max-width: 1024px) {
+      .hero-stats {
+        flex-wrap: wrap;
+        gap: 40px 0;
+      }
+      .hero-stat-item {
+        flex: 0 0 50%;
+      }
+      .hero-stat-item:not(:last-child)::after {
+        display: none;
+      }
+      .hero-lines {
+        display: none !important;
+      }
+    }
 
-@media (max-width: 768px) {
-  .hero-stats {
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-  }
-  .hero-stat-item {
-    flex: 0 0 100%;
-  }
-}
+    @media (max-width: 768px) {
+      .hero-stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+      }
+      .hero-stat-item {
+        flex: 0 0 100%;
+      }
+    }
+
     /* ─────────────────────────────────────────────────────
        SCROLL INDICATOR
     ───────────────────────────────────────────────────── */
@@ -994,7 +981,7 @@
     .tag:hover { border-color: var(--black); color: var(--black); }
 
     /* ─────────────────────────────────────────────────────
-       SECTION: LEISTUNGEN
+       SECTION: LEISTUNGEN (Optimized with rounded icons)
     ───────────────────────────────────────────────────── */
     #leistungen {
       padding: 120px 6vw;
@@ -1076,16 +1063,27 @@
       color: rgba(201,185,154,0.5);
       letter-spacing: 0.08em;
     }
+
+    /* Kreisrunde Icons nach Vorlage */
     .service-icon {
-      width: 48px;
-      height: 48px;
-      background: rgba(232,223,208,0.08);
-      border-radius: var(--radius-sm);
+      width: 52px;
+      height: 52px;
+      background: rgba(255,255,255,0.03);
+      border: 1.2px solid rgba(232, 223, 208, 0.25);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
+      color: var(--cream);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 2px 10px rgba(0,0,0,0.4);
+      transition: border-color var(--transition), transform var(--transition);
     }
+    .service-card:hover .service-icon {
+      border-color: var(--cream);
+      transform: scale(1.05);
+    }
+
     .service-title {
       font-family: var(--font-display);
       font-size: 1.55rem;
@@ -1100,18 +1098,6 @@
       color: rgba(250,250,248,0.45);
       flex: 1;
     }
-    .service-link {
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cream);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: gap var(--transition-fast);
-    }
-    .service-card:hover .service-link { gap: 14px; }
 
     /* ─────────────────────────────────────────────────────
        SECTION: FÜR UNTERNEHMEN
@@ -1590,14 +1576,6 @@
       font-family: var(--font-body);
     }
 
-    /* Remove default number input spinners */
-    .form-input::-webkit-outer-spin-button,
-    .form-input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    /* Select dropdown styling */
     .form-select {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230E0E0C' d='M1.5 4.5l4.5 4.5 4.5-4.5'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
@@ -1631,41 +1609,31 @@
        PRINT STYLES
     ───────────────────────────────────────────────────── */
     @media print {
-      /* Hide non-essential elements */
       nav, .nav-hamburger, #cookieBanner, #cookieSettingsModal,
       .mobile-menu, .cta-section, .initiativ-cta,
       [aria-hidden="true"], .no-print {
         display: none !important;
       }
-
-      /* Body & Text */
       body {
         background: white;
         color: #000;
         font-size: 12pt;
         line-height: 1.5;
       }
-
-      /* Links */
       a {
         color: #000;
         text-decoration: underline;
       }
-
-      /* Spacing */
       h1, h2, h3 { margin-top: 0.5in; page-break-after: avoid; }
       p { orphans: 3; widows: 3; page-break-inside: avoid; }
-
-      /* Images */
       img { max-width: 100%; page-break-inside: avoid; }
-
-      /* Remove backgrounds */
       * {
         background-color: transparent !important;
         color: #000 !important;
         box-shadow: none !important;
       }
     }
+
     footer {
       background: var(--black);
       padding: 72px 6vw 40px;
@@ -1718,24 +1686,16 @@
     }
     .footer-social {
       display: flex;
-      gap: 12px;
-      margin-top: 8px;
+      gap: 1rem; 
+      margin-top: 1rem;
     }
-.footer-social {
-  display: flex;
-  gap: 1rem; 
-  margin-top: 1rem;
-}
-
-.footer-social a {
-  color: #7A7670;
-  transition: color 0.2s ease;
-}
-
-/* Hover-Effekt */
-.footer-social a:hover {
-  color: #7A7670;
-}
+    .footer-social a {
+      color: #7A7670;
+      transition: color 0.2s ease;
+    }
+    .footer-social a:hover {
+      color: var(--cream);
+    }
 
     .footer-col-title {
       font-size: 0.73rem;
@@ -1799,7 +1759,6 @@
       border-radius: 2px;
     }
 
-    /* Better focus for buttons */
     .btn:focus-visible {
       outline: 2px solid var(--black);
       outline-offset: 3px;
@@ -1809,34 +1768,20 @@
       outline: 2px solid var(--black);
     }
 
-    /* High contrast mode support */
     @media (prefers-contrast: more) {
-      .btn {
-        border: 1px solid currentColor;
-      }
-
-      .section-subtitle {
-        font-weight: 400;
-      }
+      .btn { border: 1px solid currentColor; }
+      .section-subtitle { font-weight: 400; }
     }
 
-    /* Reduced motion support */
     @media (prefers-reduced-motion: reduce) {
       * {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-
-      html {
-        scroll-behavior: auto;
-      }
+      html { scroll-behavior: auto; }
     }
 
-    /* Dark mode support (if OS has it) */
-    @media (prefers-color-scheme: dark) {
-      /* Already dark-friendly, but can add extra adjustments if needed */
-    }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(28px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -1851,7 +1796,7 @@
     }
 
     /* ─────────────────────────────────────────────────────
-       RESPONSIVE
+       RESPONSIVE & MOBILE BUG FIXES
     ───────────────────────────────────────────────────── */
     @media (max-width: 1100px) {
       .about-grid,
@@ -2000,10 +1945,10 @@
     }
 
     @media (max-width: 480px) {
-      /* Padding and margins */
+      /* Padding and margins - BEHEBUNG DER WEISSEN RÄNDER */
       #unternehmen, #leistungen, #fur-unternehmen, #bewerber, 
       #stellenangebote, #testimonials, #kontakt { padding: 60px 4vw; }
-      main { padding: 0 4vw 60px; }
+      main { padding: 0 0 60px; } /* Horizontales Padding entfernt um weisse Ränder zu lösen */
       
       .section-title { font-size: clamp(1.3rem, 3.5vw, 1.8rem); }
       .page-title { font-size: clamp(1.5rem, 3.5vw, 2rem); }
@@ -2035,7 +1980,7 @@
       /* Service cards */
       .service-card { padding: 24px 16px; }
       .service-number { font-size: 0.80rem; }
-      .service-icon { width: 40px; height: 40px; font-size: 1.2rem; }
+      .service-icon { width: 44px; height: 44px; font-size: 1.1rem; }
       .service-title { font-size: 1.1rem; }
       .service-desc { font-size: 0.82rem; }
       
@@ -2099,21 +2044,21 @@
        NAVIGATION
   ════════════════════════════════════════════════ -->
   <header>
-  <nav id="navbar" aria-label="Hauptnavigation">
-    <a href="#" class="nav-logo" aria-label="Bewise Startseite">
-      <img src="Logo_gold_transparent.png" alt="Bewise Logo" class="nav-logo-img" aria-hidden="true">
-      <span class="nav-logo-text">Bewise <span>| Recruiting & HR</span></span>
-    </a>
+    <nav id="navbar" aria-label="Hauptnavigation">
+      <a href="#" class="nav-logo" aria-label="Bewise Startseite">
+        <img src="Logo_gold_transparent.png" alt="Bewise Logo" class="nav-logo-img" aria-hidden="true">
+        <span class="nav-logo-text">Bewise <span>| Recruiting & HR</span></span>
+      </a>
 
-    <ul class="nav-links" role="list">
-      <li><a href="#unternehmen">Unternehmen</a></li>
-      <li><a href="#leistungen">Leistungen</a></li>
-      <li><a href="#bewerber">Bewerber</a></li>
-      <li><a href="#stellenangebote">Stellenangebote</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-    </ul>
+      <ul class="nav-links" role="list">
+        <li><a href="#unternehmen">Unternehmen</a></li>
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#bewerber">Bewerber</a></li>
+        <li><a href="#stellenangebote">Stellenangebote</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
 
-    <a href="#kontakt" class="nav-cta" aria-label="Beratungsgespräch vereinbaren">Gespräch vereinbaren</a>
+      <a href="#kontakt" class="nav-cta" aria-label="Beratungsgespräch vereinbaren">Gespräch vereinbaren</a>
 
       <button class="nav-hamburger" id="menuToggle" aria-label="Menü öffnen" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -2133,126 +2078,125 @@
 
   <main>
     <!-- ═══════════════════════════════════════════════
-         HERO
+         HERO (Cleaned Headline)
     ════════════════════════════════════════════════ -->
-<section id="hero" aria-labelledby="hero-headline">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-lines" aria-hidden="true"></div>
+    <section id="hero" aria-labelledby="hero-headline">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-lines" aria-hidden="true"></div>
 
-  <div class="hero-image-block" aria-hidden="true">
-    <img
-      src="backround.jpg"
-      alt="Professionelles Business-Meeting – strategisches Recruiting"
-      loading="eager"
-      decoding="async"
-      width="1920"
-      height="1080"
-    />
-  </div>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      <span class="label" style="color:rgba(232,223,208,0.65);">Premium Recruiting & HR · Seit 2026</span>
-    </div>
-
-    <div class="hero-text-block">
-      <h1 class="hero-headline" id="hero-headline">
-        Talente suchen<br>
-        Traumjob finden<br>
-        <em>Talente suchen<br />Traumjob finden</em>
-      </h1>
-
-      <p class="hero-sub">
-        Wir verbinden exzellente Talente mit zukunftsorientierten Unternehmen.
-        Effizient, diskret und auf Augenhöhe.
-      </p>
-
-      <div class="hero-ctas">
-        <a href="#fur-unternehmen" class="btn btn-primary">
-          Talente finden <span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a href="#stellenangebote" class="btn btn-outline">
-          Traumjob finden <span class="arrow" aria-hidden="true">→</span>
-        </a>
+      <div class="hero-image-block" aria-hidden="true">
+        <img
+          src="backround.jpg"
+          alt="Professionelles Business-Meeting – strategisches Recruiting"
+          loading="eager"
+          decoding="async"
+          width="1920"
+          height="1080"
+        />
       </div>
-    </div>
-  </div>
 
-  <div class="hero-stats" aria-label="Kennzahlen">
-    <div class="hero-stat-item">
-      <div class="hero-stat-icon-wrapper">
-        <div class="hero-stat-number">10+</div>
-      </div>
-      <div class="hero-stat-title">Jahre Expertise</div>
-      <div class="hero-stat-desc">Erfahrung, die Vertrauen schafft.</div>
-    </div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-line"></div>
+          <span class="label" style="color:rgba(232,223,208,0.65);">Premium Recruiting & HR · Seit 2026</span>
+        </div>
 
-    <div class="hero-stat-item">
-      <div class="hero-stat-icon-wrapper">
-        <div class="hero-stat-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
+        <div class="hero-text-block">
+          <h1 class="hero-headline" id="hero-headline">
+            Talente suchen<br>
+            Traumjob finden
+          </h1>
+
+          <p class="hero-sub">
+            Wir verbinden exzellente Talente mit zukunftsorientierten Unternehmen.
+            Effizient, diskret und auf Augenhöhe.
+          </p>
+
+          <div class="hero-ctas">
+            <a href="#fur-unternehmen" class="btn btn-primary">
+              Talente finden <span class="arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="#stellenangebote" class="btn btn-outline">
+              Traumjob finden <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="hero-stat-title">Persönlicher Ansatz</div>
-      <div class="hero-stat-desc">Jede Besetzung ist so individuell wie Ihr Unternehmen.</div>
-    </div>
 
-    <div class="hero-stat-item">
-      <div class="hero-stat-icon-wrapper">
-        <div class="hero-stat-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            <rect x="10" y="11" width="4" height="4" rx="1" />
-            <path d="M11 11V9a1 1 0 0 1 2 0v2" />
-          </svg>
+      <div class="hero-stats" aria-label="Kennzahlen">
+        <div class="hero-stat-item">
+          <div class="hero-stat-icon-wrapper">
+            <div class="hero-stat-number">10+</div>
+          </div>
+          <div class="hero-stat-title">Jahre Expertise</div>
+          <div class="hero-stat-desc">Erfahrung, die Vertrauen schafft.</div>
+        </div>
+
+        <div class="hero-stat-item">
+          <div class="hero-stat-icon-wrapper">
+            <div class="hero-stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
+          </div>
+          <div class="hero-stat-title">Persönlicher Ansatz</div>
+          <div class="hero-stat-desc">Jede Besetzung ist so individuell wie Ihr Unternehmen.</div>
+        </div>
+
+        <div class="hero-stat-item">
+          <div class="hero-stat-icon-wrapper">
+            <div class="hero-stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <rect x="10" y="11" width="4" height="4" rx="1" />
+                <path d="M11 11V9a1 1 0 0 1 2 0v2" />
+              </svg>
+            </div>
+          </div>
+          <div class="hero-stat-title">Diskrete Besetzung</div>
+          <div class="hero-stat-desc">Vertraulichkeit auf höchstem Niveau ist für uns selbstverständlich.</div>
+        </div>
+
+        <div class="hero-stat-item">
+          <div class="hero-stat-icon-wrapper">
+            <div class="hero-stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+          </div>
+          <div class="hero-stat-title">Deutschlandweit</div>
+          <div class="hero-stat-desc">Wir finden die richtigen Talente – überall in Deutschland.</div>
         </div>
       </div>
-      <div class="hero-stat-title">Diskrete Besetzung</div>
-      <div class="hero-stat-desc">Vertraulichkeit auf höchstem Niveau ist für uns selbstverständlich.</div>
-    </div>
 
-    <div class="hero-stat-item">
-      <div class="hero-stat-icon-wrapper">
-        <div class="hero-stat-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
-            <circle cx="12" cy="10" r="3" />
-          </svg>
-        </div>
+      <div class="scroll-indicator" aria-hidden="true">
+        <div class="scroll-indicator-line"></div>
+        <span>Scroll</span>
       </div>
-      <div class="hero-stat-title">Deutschlandweit</div>
-      <div class="hero-stat-desc">Wir finden die richtigen Talente – überall in Deutschland.</div>
+    </section>
+
+    <div class="ticker-wrap" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="ticker-item">Executive Search <span class="ticker-dot"></span></span>
+        <span class="ticker-item">HR-Beratung <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Interim Management <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Employer Branding <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Assessment Center <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Führungskräfteentwicklung <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Onboarding Support <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Executive Search <span class="ticker-dot"></span></span>
+        <span class="ticker-item">HR-Beratung <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Interim Management <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Employer Branding <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Assessment Center <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Führungskräfteentwicklung <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Onboarding Support <span class="ticker-dot"></span></span>
+      </div>
     </div>
-  </div>
-
-  <div class="scroll-indicator" aria-hidden="true">
-    <div class="scroll-indicator-line"></div>
-    <span>Scroll</span>
-  </div>
-</section>
-
-<div class="ticker-wrap" aria-hidden="true">
-  <div class="ticker-track">
-    <span class="ticker-item">Executive Search <span class="ticker-dot"></span></span>
-    <span class="ticker-item">HR-Beratung <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Interim Management <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Employer Branding <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Assessment Center <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Führungskräfteentwicklung <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Onboarding Support <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Executive Search <span class="ticker-dot"></span></span>
-    <span class="ticker-item">HR-Beratung <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Interim Management <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Employer Branding <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Assessment Center <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Führungskräfteentwicklung <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Onboarding Support <span class="ticker-dot"></span></span>
-  </div>
-</div>
 
     <!-- ═══════════════════════════════════════════════
          ÜBER UNS
@@ -2290,7 +2234,7 @@
             Mehr als Recruiting.<br />Strategische<br /><em style="font-style:italic; color: var(--cream-dark);">Partnerschaft.</em>
           </h2>
           <p class="reveal reveal-delay-2">
-            Bewise steht für eine neue Generation der Personalberatung: <strong>präzise, diskret und tief verankert</strong> in den Realitäten moderner Unternehmensführung. Wir verstehen die Anforderungen unserer Kunden nicht als Aufträge, sondern als gemeinsame Herausforderungen.
+            Bewise steht für eine new Generation der Personalberatung: <strong>präzise, diskret und tief verankert</strong> in den Realitäten moderner Unternehmensführung. Wir verstehen die Anforderungen unserer Kunden nicht als Aufträge, sondern als gemeinsame Herausforderungen.
           </p>
           <p class="reveal reveal-delay-2">
             Unser interdisziplinäres Team aus erfahrenen HR-Experten, Branchenkennern und Karriereberatern kombiniert fundiertes Fachwissen mit einem dichten Netzwerk – für Ergebnisse, die nachhaltig wirken.
@@ -2310,7 +2254,7 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════
-         LEISTUNGEN
+         LEISTUNGEN (Optimierte runde Icons & dickerer Graph)
     ════════════════════════════════════════════════ -->
     <section id="leistungen" aria-labelledby="leistungen-headline">
       <div class="leistungen-bg" aria-hidden="true"></div>
@@ -2326,7 +2270,7 @@
           </p>
         </div>
 
-<div class="services-grid" role="list">
+        <div class="services-grid" role="list">
           <article class="service-card reveal" role="listitem">
             <span class="service-number">01</span>
             <div class="service-icon" aria-hidden="true">
@@ -2371,10 +2315,15 @@
             </p>
           </article>
 
+          <!-- Punkt 05: Mit dickeren Diagramm-Balken (stroke-width="3.2") -->
           <article class="service-card reveal reveal-delay-1" role="listitem">
             <span class="service-number">05</span>
             <div class="service-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F3EDE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F3EDE4" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
             </div>
             <h3 class="service-title">Assessment & Diagnostik</h3>
             <p class="service-desc">
@@ -2584,21 +2533,23 @@
               <span class="job-badge">Interim</span>
             </article>
           </div>
+        </div>
+      </div>
     </section>
 
-                <div class="initiativ-cta reveal">
-  <div>
-    <h3>Keine passende Position dabei? <br>
-      <span>Initiativ</span> bewerben.
-    </h3>
-  </div>
+    <div class="initiativ-cta reveal">
+      <div>
+        <h3>Keine passende Position dabei? <br>
+          <span>Initiativ</span> bewerben.
+        </h3>
+      </div>
 
-  <div>
-    <a href="#kontakt" class="btn-pill">
-      Jetzt bewerben <span>→</span>
-    </a>
-  </div>
-</div>
+      <div>
+        <a href="#kontakt" class="btn-pill">
+          Jetzt bewerben <span>→</span>
+        </a>
+      </div>
+    </div>
 
     <!-- ═══════════════════════════════════════════════
          TESTIMONIALS
@@ -2657,178 +2608,178 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════
-         KONTAKT
+         KONTAKT (Aktualisierte Kontaktdaten)
     ════════════════════════════════════════════════ -->
-<section id="kontakt" aria-labelledby="kontakt-headline">
-  <div class="kontakt-inner">
-    
-    <div class="kontakt-info">
-      <span class="label reveal">Kontakt</span>
-      <h2 class="section-title reveal reveal-delay-1" id="kontakt-headline">
-        Lassen Sie uns<br />sprechen.
-      </h2>
-      <p class="reveal reveal-delay-2">
-        Ob Unternehmen auf der Suche nach Ausnahmekandidaten oder Fachkraft mit Ambitionen – wir sind Ihr persönlicher Ansprechpartner für alle Fragen rund um Recruiting und Karriere.
-      </p>
+    <section id="kontakt" aria-labelledby="kontakt-headline">
+      <div class="kontakt-inner">
+        
+        <div class="kontakt-info">
+          <span class="label reveal">Kontakt</span>
+          <h2 class="section-title reveal reveal-delay-1" id="kontakt-headline">
+            Lassen Sie uns<br />sprechen.
+          </h2>
+          <p class="reveal reveal-delay-2">
+            Ob Unternehmen auf der Suche nach Ausnahmekandidaten oder Fachkraft mit Ambitionen – wir sind Ihr persönlicher Ansprechpartner für alle Fragen rund um Recruiting und Karriere.
+          </p>
 
-      <div class="kontakt-detail-list reveal reveal-delay-2" role="list">
-        <!-- Adresse -->
-        <div class="kontakt-detail" role="listitem">
-          <div class="kontakt-detail-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-          </div>
-          <div>
-            <div class="kontakt-detail-label">Adresse</div>
-            <div class="kontakt-detail-text">Musterstraße 12, 20095 Hamburg</div>
+          <div class="kontakt-detail-list reveal reveal-delay-2" role="list">
+            <!-- Adresse -->
+            <div class="kontakt-detail" role="listitem">
+              <div class="kontakt-detail-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div>
+                <div class="kontakt-detail-label">Adresse</div>
+                <div class="kontakt-detail-text">Brunestr. 17, 58511 Lüdenscheid</div>
+              </div>
+            </div>
+
+            <!-- Telefon -->
+            <div class="kontakt-detail" role="listitem">
+              <div class="kontakt-detail-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="kontakt-detail-label">Telefon</div>
+                <div class="kontakt-detail-text"><a href="tel:+491773259960" title="Anrufen">+49 177 3259960</a></div>
+              </div>
+            </div>
+
+            <!-- E-Mail -->
+            <div class="kontakt-detail" role="listitem">
+              <div class="kontakt-detail-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="kontakt-detail-label">E-Mail</div>
+                <div class="kontakt-detail-text"><a href="mailto:Kontakt@bewise-talents.de">Kontakt@bewise-talents.de</a></div>
+              </div>
+            </div>
+
+            <!-- Erreichbarkeit -->
+            <div class="kontakt-detail" role="listitem">
+              <div class="kontakt-detail-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div>
+                <div class="kontakt-detail-label">Erreichbarkeit</div>
+                <div class="kontakt-detail-text">08:00 - 16:00</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Telefon -->
-        <div class="kontakt-detail" role="listitem">
-          <div class="kontakt-detail-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-          </div>
-          <div>
-            <div class="kontakt-detail-label">Telefon</div>
-            <div class="kontakt-detail-text"><a href="tel:+4917732599600" title="Anrufen">+49 177 32599600</a></div>
-          </div>
+        <!-- Formspree Integration -->
+        <div class="kontakt-form reveal reveal-delay-1">
+          <h3 class="form-title">Schreiben Sie uns.</h3>
+          <p class="form-subtitle">Wir antworten innerhalb von 24 Stunden.</p>
+
+          <form action="Platzhalter-für-Zoho-Integration" method="POST" id="contactForm" novalidate aria-label="Kontaktformular">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName" class="form-label">Vorname *</label>
+                <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Max" required autocomplete="given-name" />
+              </div>
+              <div class="form-group">
+                <label for="lastName" class="form-label">Nachname *</label>
+                <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Mustermann" required autocomplete="family-name" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email" class="form-label">E-Mail *</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="max@muster.de" required autocomplete="email" />
+              </div>
+              <div class="form-group">
+                <label for="phone" class="form-label">Telefon</label>
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+49 40 ..." autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="form-group full">
+              <label for="interest" class="form-label">Ich bin *</label>
+              <select id="interest" name="interest" class="form-select" required>
+                <option value="" disabled selected>Bitte wählen …</option>
+                <option value="unternehmen">Unternehmen / Recruiter</option>
+                <option value="bewerber">Bewerber / Kandidat</option>
+                <option value="beides">Beides</option>
+                <option value="sonstiges">Sonstiges</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label for="message" class="form-label">Ihre Nachricht *</label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Wie können wir Ihnen helfen?" required></textarea>
+            </div>
+
+            <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
+            <input type="hidden" name="_subject" value="Neue Kontaktanfrage – Bewise Recruiting" />
+
+            <p class="form-privacy">
+              Mit dem Absenden stimmen Sie zu, dass Ihre Daten zur Bearbeitung Ihrer Anfrage gemäß unserer
+              <a href="datenschutz.html">Datenschutzerklärung</a> verarbeitet werden. Sie akzeptieren die Verarbeitung durch Zoho Recruit gemäß Art. 6 Abs. 1 lit. b DSGVO.
+            </p>
+
+            <button type="submit" class="btn btn-dark" style="width:100%; justify-content:center;">
+              Nachricht senden <span class="arrow" aria-hidden="true">→</span>
+            </button>
+          </form>
         </div>
 
-        <!-- E-Mail -->
-        <div class="kontakt-detail" role="listitem">
-          <div class="kontakt-detail-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-            </svg>
-          </div>
-          <div>
-            <div class="kontakt-detail-label">E-Mail</div>
-            <div class="kontakt-detail-text"><a href="mailto:info@bewise-recruiting.de">info@bewise-recruiting.de</a></div>
-          </div>
-        </div>
-
-        <!-- Erreichbarkeit -->
-        <div class="kontakt-detail" role="listitem">
-          <div class="kontakt-detail-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-          </div>
-          <div>
-            <div class="kontakt-detail-label">Erreichbarkeit</div>
-            <div class="kontakt-detail-text">Mo–Fr, 09:00–18:00 Uhr</div>
-          </div>
-        </div>
       </div>
-    </div> <!-- HIER WAR DER FEHLER: Dieses schließende Div saß zu weit unten -->
-
-    <!-- Formspree Integration -->
-    <div class="kontakt-form reveal reveal-delay-1">
-      <h3 class="form-title">Schreiben Sie uns.</h3>
-      <p class="form-subtitle">Wir antworten innerhalb von 24 Stunden.</p>
-
-      <form action="Platzhalter-für-Zoho-Integration" method="POST" id="contactForm" novalidate aria-label="Kontaktformular">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstName" class="form-label">Vorname *</label>
-            <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Max" required autocomplete="given-name" />
-          </div>
-          <div class="form-group">
-            <label for="lastName" class="form-label">Nachname *</label>
-            <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Mustermann" required autocomplete="family-name" />
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email" class="form-label">E-Mail *</label>
-            <input type="email" id="email" name="email" class="form-input" placeholder="max@muster.de" required autocomplete="email" />
-          </div>
-          <div class="form-group">
-            <label for="phone" class="form-label">Telefon</label>
-            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+49 40 ..." autocomplete="tel" />
-          </div>
-        </div>
-
-        <div class="form-group full">
-          <label for="interest" class="form-label">Ich bin *</label>
-          <select id="interest" name="interest" class="form-select" required>
-            <option value="" disabled selected>Bitte wählen …</option>
-            <option value="unternehmen">Unternehmen / Recruiter</option>
-            <option value="bewerber">Bewerber / Kandidat</option>
-            <option value="beides">Beides</option>
-            <option value="sonstiges">Sonstiges</option>
-          </select>
-        </div>
-
-        <div class="form-group full">
-          <label for="message" class="form-label">Ihre Nachricht *</label>
-          <textarea id="message" name="message" class="form-textarea" placeholder="Wie können wir Ihnen helfen?" required></textarea>
-        </div>
-
-        <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
-        <input type="hidden" name="_subject" value="Neue Kontaktanfrage – Bewise Recruiting" />
-
-        <p class="form-privacy">
-          Mit dem Absenden stimmen Sie zu, dass Ihre Daten zur Bearbeitung Ihrer Anfrage gemäß unserer
-          <a href="datenschutz.html">Datenschutzerklärung</a> verarbeitet werden. Sie akzeptieren die Verarbeitung durch Zoho Recruit gemäß Art. 6 Abs. 1 lit. b DSGVO.
-        </p>
-
-        <button type="submit" class="btn btn-dark" style="width:100%; justify-content:center;">
-          Nachricht senden <span class="arrow" aria-hidden="true">→</span>
-        </button>
-      </form>
-    </div>
-
-  </div>
-</section>
+    </section>
+  </main>
 
   <!-- ═══════════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════════════ -->
-<footer role="contentinfo">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <div class="footer-logo-mark">
-            <img src="Logo_gold_transparent.png" alt="Bewise Logo" class="footer-logo-img">
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-mark">
+              <img src="Logo_gold_transparent.png" alt="Bewise Logo" class="footer-logo-img">
+            </div>
+            <span class="footer-logo-name">Bewise | Recruiting & HR</span>
           </div>
-          <span class="footer-logo-name">Bewise | Recruiting & HR</span>
+          <p class="footer-tagline">
+            Wir verbinden exzellente Talente mit zukunftsorientierten Unternehmen. Diskret, effizient und auf Augenhöhe.
+          </p>
+          <nav class="footer-social" aria-label="Social Media Links">
+            <!-- LinkedIn Icon -->
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Bewise auf LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect width="4" height="12" x="2" y="9"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              <span class="sr-only">LinkedIn</span>
+            </a>
+            
+            <!-- Instagram Icon -->
+            <a href="https://instagram.com/bewise.talents/" target="_blank" rel="noopener noreferrer" aria-label="Bewise auf Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram" aria-hidden="true">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+              </svg>
+              <span class="sr-only">Instagram</span>
+            </a>
+          </nav>
         </div>
-        <p class="footer-tagline">
-          Wir verbinden exzellente Talente mit zukunftsorientierten Unternehmen. Diskret, effizient und auf Augenhöhe.
-        </p>
-        <nav class="footer-social" aria-label="Social Media Links">
-          
-          <!-- LinkedIn Icon (Lucide) -->
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Bewise auf LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin" aria-hidden="true">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-              <rect width="4" height="12" x="2" y="9"/>
-              <circle cx="4" cy="4" r="2"/>
-            </svg>
-            <span class="sr-only">LinkedIn</span>
-          </a>
-          
-          <!-- Instagram Icon (Lucide) -->
-          <a href="https://instagram.com/bewise.talents/" target="_blank" rel="noopener noreferrer" aria-label="Bewise auf Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram" aria-hidden="true">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-            </svg>
-            <span class="sr-only">Instagram</span>
-          </a>
-        </nav>
-      </div>
 
         <nav aria-label="Unternehmen Links">
           <h4 class="footer-col-title">Unternehmen</h4>
@@ -2926,7 +2877,7 @@
        JAVASCRIPT
   ════════════════════════════════════════════════ -->
   <script>
-    /* ─── Navbar scroll behavior with smooth transition ─── */
+    /* ─── Navbar scroll behavior ─── */
     const navbar = document.getElementById('navbar');
     let lastScrollY = 0;
     let ticking = false;
@@ -2958,9 +2909,9 @@
       mobileMenu.style.display = 'flex';
       mobileMenu.removeAttribute('aria-hidden');
       menuToggle.setAttribute('aria-expanded', 'true');
-      menuToggle.style.visibility = 'hidden'; // Verhindert Überlappung mit dem Schließen-Kreuz
+      menuToggle.style.visibility = 'hidden'; 
       document.body.style.overflow = 'hidden';
-      document.body.style.paddingRight = '15px'; // Prevent layout shift from scrollbar
+      document.body.style.paddingRight = '15px'; 
     }
 
     function closeMobileMenu() {
@@ -2968,7 +2919,7 @@
       setTimeout(() => { mobileMenu.style.display = ''; }, 400);
       mobileMenu.setAttribute('aria-hidden', 'true');
       menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.style.visibility = ''; // Hamburger wieder einblenden
+      menuToggle.style.visibility = ''; 
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
     }
@@ -2976,13 +2927,11 @@
     menuToggle?.addEventListener('click', openMobileMenu);
     menuClose?.addEventListener('click', closeMobileMenu);
 
-    // Close menu when clicking on a link
     const mobileLinks = mobileMenu?.querySelectorAll('a');
     mobileLinks?.forEach(link => {
       link.addEventListener('click', closeMobileMenu);
     });
 
-    // Close menu on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) {
         closeMobileMenu();
@@ -3067,32 +3016,28 @@
       }
     }
 
-    // Event Listeners for Cookie Banner
     document.getElementById('cookieAccept')?.addEventListener('click', acceptCookies);
     document.getElementById('cookieReject')?.addEventListener('click', rejectCookies);
     
-    // Close Modal when clicking outside
     document.getElementById('cookieSettingsModal')?.addEventListener('click', (e) => {
       if (e.target === document.getElementById('cookieSettingsModal')) {
         closeCookieSettings();
       }
     });
 
-    // Close modal on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeCookieSettings();
       }
     });
 
-    // Initialize banner on page load
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initCookieBanner);
     } else {
       initCookieBanner();
     }
 
-    /* ─── Smooth scroll for anchor links ─── */
+    /* ─── Smooth scroll ─── */
     document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
@@ -3109,7 +3054,6 @@
 
   </script>
 
-  <!-- Add CSS animation for cookie banner slide-up -->
   <style>
     @keyframes slideUp {
       from {
