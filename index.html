@@ -235,14 +235,14 @@
     }
 
     /* ─────────────────────────────────────────────────────
-       INITIATIV CTA SECTION
+       INITIATIV CTA SECTION (Visually aligned to companies-cta-bar)
     ───────────────────────────────────────────────────── */
     .initiativ-cta {
-      max-width: 1200px;
-      margin: 64px auto;
-      padding: 48px 56px;
-      background-color: #0d0d0b;
-      border-radius: 24px;
+      max-width: 1280px;
+      margin: 64px auto 0;
+      padding: 56px 64px;
+      background-color: var(--black);
+      border-radius: var(--radius-lg);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -258,18 +258,16 @@
 
     .initiativ-cta h3 {
       font-family: var(--font-display);
-      font-size: 2.2rem;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 300;
       line-height: 1.25;
-      color: #ffffff;
-      font-weight: 400;
-      letter-spacing: -0.02em;
+      color: var(--white);
       margin: 0;
     }
 
     .initiativ-cta h3 span {
       font-style: italic;
-      font-weight: 300;
-      color: #e5dfd5;
+      color: var(--cream);
     }
 
     .initiativ-cta .btn-pill {
@@ -298,6 +296,7 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 28px rgba(0, 0, 0, 0.2);
     }
+    
     .btn {
       display: inline-flex;
       align-items: center;
@@ -1170,6 +1169,7 @@
       justify-content: space-between;
       gap: 40px;
       flex-wrap: wrap;
+      box-sizing: border-box;
     }
     .cta-bar-title {
       font-family: var(--font-display);
@@ -1844,15 +1844,17 @@
       .process-steps,
       .testimonials-grid { grid-template-columns: 1fr; }
 
-      /* CTA Bar */
-      .companies-cta-bar { 
+      /* CTA Bars */
+      .companies-cta-bar,
+      .initiativ-cta { 
         padding: 32px 24px; 
         flex-direction: column; 
         text-align: center; 
         gap: 24px;
         border-radius: var(--radius-md);
       }
-      .cta-bar-title { font-size: 1.3rem; }
+      .cta-bar-title,
+      .initiativ-cta h3 { font-size: 1.3rem; }
 
       /* Forms */
       .form-row { grid-template-columns: 1fr; }
@@ -1941,7 +1943,7 @@
       .kontakt-detail-label { font-size: 0.70rem; }
       
       /* Initiativ CTA */
-      .initiativ-cta { margin: 40px auto; padding: 32px 20px; }
+      .initiativ-cta { margin: 40px auto 0; }
     }
 
     @media (max-width: 480px) {
@@ -2017,10 +2019,10 @@
       #cookieSettingsModal h2 { font-size: 1.4rem; }
       
       /* Initiativ CTA */
-      .initiativ-cta { margin: 32px auto; padding: 24px 16px; }
+      .initiativ-cta { margin: 32px auto 0; }
       .initiativ-cta > div { flex: 1; min-width: 100%; }
       .initiativ-cta h3 { font-size: 1.2rem; margin: 0 0 16px 0; }
-      .initiativ-cta a { width: 100%; text-align: center; }
+      .initiativ-cta .btn-pill { width: 100%; text-align: center; }
       
       /* Job listings */
       .job-item { padding: 16px 12px; }
@@ -2452,7 +2454,7 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════
-         STELLENANGEBOTE
+         STELLENANGEBOTE (Now houses aligned Initiativ-CTA)
     ════════════════════════════════════════════════ -->
     <section id="stellenangebote" aria-labelledby="jobs-headline">
       <div class="jobs-inner">
@@ -2534,22 +2536,24 @@
             </article>
           </div>
         </div>
+
+        <!-- Aligned Initiativ CTA inside .jobs-inner wrapper -->
+        <div class="initiativ-cta reveal">
+          <div>
+            <h3>Keine passende Position dabei? <br>
+              <span>Initiativ</span> bewerben.
+            </h3>
+          </div>
+
+          <div>
+            <a href="#kontakt" class="btn-pill">
+              Jetzt bewerben <span>→</span>
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
-
-    <div class="initiativ-cta reveal">
-      <div>
-        <h3>Keine passende Position dabei? <br>
-          <span>Initiativ</span> bewerben.
-        </h3>
-      </div>
-
-      <div>
-        <a href="#kontakt" class="btn-pill">
-          Jetzt bewerben <span>→</span>
-        </a>
-      </div>
-    </div>
 
     <!-- ═══════════════════════════════════════════════
          TESTIMONIALS
