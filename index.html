@@ -2692,13 +2692,19 @@ footer, .footer {
   <h3 class="form-title">Jetzt Kontakt aufnehmen.</h3>
   <p class="form-subtitle">Wir antworten innerhalb von 24 Stunden.</p>
 
-  <form id="zohoKontaktForm" novalidate aria-label="Kontaktformular">
+  <form action="https://forms.zohopublic.eu/kontaktbewise1/form/ContactUs/htmlRecords/submit" 
+        method="POST" 
+        name="form" 
+        id="zohoKontaktForm" 
+        accept-charset="UTF-8" 
+        enctype="multipart/form-data">
     
     <input type="hidden" name="zf_referrer_name" value="">
     <input type="hidden" name="zc_gad" value="">
     <input type="hidden" name="formPerma" value="JLi0kM94q75uqHwls9datRK9S4j6zFGic1-3ITTBfGU">
     <input type="hidden" name="viewType" value="page">
     <input type="hidden" name="sharedWise" value="">
+    
     <input type="hidden" name="zf_redirect_url" value="">
   
     <div class="form-group full">
@@ -2756,7 +2762,7 @@ footer, .footer {
     </div>
 
     <div class="form-group full" style="display: flex; align-items: flex-start; gap: 10px; margin-top: 15px; margin-bottom: 15px;">
-      <input type="checkbox" id="privacyAccept" name="DecisionBox" value="true" required style="margin-top: 5px; cursor: pointer; width: auto;" />
+      <input type="checkbox" id="privacyAccept" name="privacy_local" value="true" required style="margin-top: 5px; cursor: pointer; width: auto;" />
       <label for="privacyAccept" class="form-label" style="font-weight: normal; cursor: pointer; margin: 0;">
         Ich stimme zu, dass meine Daten zur Bearbeitung meiner Anfrage gemäß der 
         <a href="datenschutz.html" target="_blank" style="text-decoration: underline;">Datenschutzerklärung</a> verarbeitet werden. 
@@ -2769,50 +2775,6 @@ footer, .footer {
     </button>
   </form>
 </div>
-
-<script>
-document.getElementById('zohoKontaktForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const form = this;
-  
-  // Browser-eigene Pflichtfeldvalidierung triggern
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
-
-  const formData = new FormData(form);
-  const targetUrl = "https://forms.zohopublic.eu/kontaktbewise1/form/ContactUs/htmlRecords/submit";
-
-  // Button-Status ändern
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalBtnText = submitBtn.innerHTML;
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = "Wird gesendet...";
-
-  fetch(targetUrl, {
-    method: 'POST',
-    body: formData,
-    mode: 'no-cors'
-  })
-  .then(() => {
-    // Erfolgsmeldung im eleganten Stil deines Formulars anzeigen
-    form.innerHTML = `
-      <div style="text-align: center; padding: 40px 20px;">
-        <h3 class="form-title" style="color: var(--black); margin-bottom: 12px;">Vielen Dank!</h3>
-        <p class="form-subtitle" style="margin-bottom: 0;">Ihre Nachricht wurde erfolgreich übermittelt.<br>Wir antworten innerhalb von 24 Stunden.</p>
-      </div>
-    `;
-  })
-  .catch(error => {
-    console.error('Fehler:', error);
-    alert('Es gab ein Problem beim Senden. Bitte versuchen Sie es erneut.');
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = originalBtnText;
-  });
-});
-</script>
         
   <!-- ═══════════════════════════════════════════════
        FOOTER
