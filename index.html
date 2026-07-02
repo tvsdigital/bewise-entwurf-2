@@ -1505,93 +1505,99 @@
       margin-bottom: 3px;
     }
 
-    /* Form */
-    .kontakt-form {
-      background: var(--grey-light);
-      border-radius: var(--radius-lg);
-      padding: 52px 48px;
-    }
+.kontakt-form {
+  background: var(--grey-light);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px; 
+  margin-bottom: 4rem; 
+}
 
-    .form-title {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      font-weight: 400;
-      color: var(--black);
-      margin-bottom: 6px;
-    }
-    .form-subtitle {
-      font-size: 0.88rem;
-      color: var(--grey-text);
-      margin-bottom: 36px;
-    }
+.form-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem; 
+  font-weight: 400;
+  color: var(--black);
+  margin-bottom: 4px;
+}
 
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+.form-subtitle {
+  font-size: 0.85rem;
+  color: var(--grey-text);
+  margin-bottom: 20px; 
+}
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      margin-bottom: 16px;
-    }
-    .form-group.full { grid-column: 1 / -1; }
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px; 
+}
 
-    .form-label {
-      font-size: 0.77rem;
-      font-weight: 500;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--grey-text);
-    }
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; 
+  margin-bottom: 12px; 
+}
+.form-group.full { grid-column: 1 / -1; }
 
-    .form-input, .form-select, .form-textarea {
-      padding: 14px 18px;
-      border: 1.5px solid transparent;
-      border-radius: var(--radius-sm);
-      background: var(--white);
-      font-family: var(--font-body);
-      font-size: 0.92rem;
-      font-weight: 300;
-      color: var(--black);
-      outline: none;
-      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      min-height: 44px;
-    }
+.form-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--grey-text);
+}
 
-    .form-input:focus, 
-    .form-select:focus, 
-    .form-textarea:focus {
-      border-color: var(--cream-dark);
-      box-shadow: 0 0 0 3px rgba(201, 185, 154, 0.18);
-    }
+.form-input, .form-select, .form-textarea {
+  padding: 10px 14px; 
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.90rem;
+  font-weight: 300;
+  color: var(--black);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  min-height: 38px;
+}
 
-    .form-textarea { 
-      resize: vertical; 
-      min-height: 120px; 
-      font-family: var(--font-body);
-    }
+.form-input:focus, 
+.form-select:focus, 
+.form-textarea:focus {
+  border-color: var(--cream-dark);
+  box-shadow: 0 0 0 3px rgba(201, 185, 154, 0.18);
+}
 
-    .form-select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230E0E0C' d='M1.5 4.5l4.5 4.5 4.5-4.5'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      padding-right: 36px;
-    }
+.form-textarea { 
+  resize: vertical; 
+  min-height: 80px; 
+  max-height: 160px; 
+  font-family: var(--font-body);
+}
 
-    .form-privacy {
-      font-size: 0.78rem;
-      color: var(--grey-text);
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-    .form-privacy a { color: var(--black); text-decoration: underline; text-underline-offset: 2px; }
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230E0E0C' d='M1.5 4.5l4.5 4.5 4.5-4.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
 
+.form-privacy {
+  font-size: 0.78rem;
+  color: var(--grey-text);
+  line-height: 1.5;
+  margin-bottom: 16px; 
+}
+.form-privacy a { color: var(--black); text-decoration: underline; text-underline-offset: 2px; }
+
+footer, .footer {
+  margin-top: 4rem !important; 
+  clear: both;
+}
     /* ─────────────────────────────────────────────────────
        SCROLL BEHAVIOR & SMOOTH SCROLL
     ───────────────────────────────────────────────────── */
