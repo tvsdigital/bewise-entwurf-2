@@ -2686,18 +2686,23 @@
   <h3 class="form-title">Jetzt Kontakt aufnehmen.</h3>
   <p class="form-subtitle">Wir antworten innerhalb von 24 Stunden.</p>
 
-  <form action="https://forms.zohopublic.eu/kontaktbewise1/form/ContactUs/formperma/JLi0kM94q75uqHwls9datRK9S4j6zFGic1-3ITTBfGU/htmlRecords/submit" 
+<form action="https://forms.zohopublic.eu/kontaktbewise1/form/ContactUs/htmlRecords/submit" 
         method="POST" 
-        id="contactForm" 
+        name="form"
+        id="form" 
         accept-charset="UTF-8" 
-        enctype="multipart/form-data" 
-        novalidate 
-        aria-label="Kontaktformular">
+        enctype="multipart/form-data">
     
+    <!-- WICHTIG: Diese versteckten Felder braucht Zoho zur Identifikation -->
     <input type="hidden" name="zf_referrer_name" value="">
-    <input type="hidden" name="zf_redirect_url" value="">
     <input type="hidden" name="zc_gad" value="">
+    <input type="hidden" name="formPerma" value="JLi0kM94q75uqHwls9datRK9S4j6zFGic1-3ITTBfGU">
+    <input type="hidden" name="viewType" value="page">
+    <input type="hidden" name="sharedWise" value="">
 
+    <!-- Falls du eine eigene Dankesseite hast, hier die URL rein, sonst leer lassen -->
+    <input type="hidden" name="zf_redirect_url" value="">
+  
     <div class="form-group full">
       <label for="salutation" class="form-label">Anrede *</label>
       <select id="salutation" name="Name_Salutation" class="form-select" fieldType="7" required>
