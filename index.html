@@ -2682,10 +2682,12 @@
           </div>
         </div>
 
+<!-- Formspree wurde durch Zoho Forms Integration ersetzt (Inkl. DSGVO-Checkbox) -->
 <div class="kontakt-form reveal reveal-delay-1">
   <h3 class="form-title">Jetzt Kontakt aufnehmen.</h3>
   <p class="form-subtitle">Wir antworten innerhalb von 24 Stunden.</p>
 
+  <!-- Zoho Action-URL und benötigte Attribute -->
   <form action="https://forms.zohopublic.eu/kontaktbewise1/form/ContactUs/formperma/JLi0kM94q75uqHwls9datRK9S4j6zFGic1-3ITTBfGU/htmlRecords/submit" 
         method="POST" 
         id="contactForm" 
@@ -2694,10 +2696,12 @@
         novalidate 
         aria-label="Kontaktformular">
     
+    <!-- Versteckte Zoho Tracking- und Weiterleitungs-Felder -->
     <input type="hidden" name="zf_referrer_name" value="">
     <input type="hidden" name="zf_redirect_url" value="">
     <input type="hidden" name="zc_gad" value="">
 
+    <!-- Anrede (Aus Zoho-Code übernommen) -->
     <div class="form-group full">
       <label for="salutation" class="form-label">Anrede *</label>
       <select id="salutation" name="Name_Salutation" class="form-select" fieldType="7" required>
@@ -2741,6 +2745,7 @@
       </select>
     </div>
 
+    <!-- Datei-Upload für Lebenslauf/Zertifikate -->
     <div class="form-group full">
       <label for="fileUpload" class="form-label">Anschreiben, Lebenslauf, Zeugnisse und Zertifikate hier hochladen</label>
       <input type="file" id="fileUpload" name="FileUpload" class="form-input" checktype="c1" multiple="multiple" style="padding: 10px;" />
@@ -2752,10 +2757,15 @@
       <textarea id="message" name="MultiLine" class="form-textarea" placeholder="Wie können wir Ihnen helfen?" maxlength="65535" required></textarea>
     </div>
 
-    <p class="form-privacy">
-      Mit dem Absenden stimmen Sie zu, dass Ihre Daten zur Bearbeitung Ihrer Anfrage gemäß unserer
-      <a href="datenschutz.html">Datenschutzerklärung</a> verarbeitet werden. Sie akzeptieren die Verarbeitung durch Zoho gemäß Art. 6 Abs. 1 lit. b DSGVO.
-    </p>
+    <!-- NEU: DSGVO-Checkbox -->
+    <div class="form-group full" style="display: flex; align-items: flex-start; gap: 10px; margin-top: 15px; margin-bottom: 15px;">
+      <input type="checkbox" id="privacyAccept" name="DecisionBox" value="true" required style="margin-top: 5px; cursor: pointer; width: auto;" />
+      <label for="privacyAccept" class="form-label" style="font-weight: normal; cursor: pointer; margin: 0;">
+        Ich stimme zu, dass meine Daten zur Bearbeitung meiner Anfrage gemäß der 
+        <a href="datenschutz.html" target="_blank" style="text-decoration: underline;">Datenschutzerklärung</a> verarbeitet werden. 
+        Ich akzeptiere die Verarbeitung durch Zoho gemäß Art. 6 Abs. 1 lit. b DSGVO. *
+      </label>
+    </div>
 
     <button type="submit" class="btn btn-dark" style="width:100%; justify-content:center;">
       Nachricht senden <span class="arrow" aria-hidden="true">→</span>
