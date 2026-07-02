@@ -2682,68 +2682,87 @@
           </div>
         </div>
 
-        <!-- Formspree Integration -->
-        <div class="kontakt-form reveal reveal-delay-1">
-          <h3 class="form-title">Jetzt Kontakt aufnehmen.</h3>
-          <p class="form-subtitle">Wir antworten innerhalb von 24 Stunden.</p>
+<div class="kontakt-form reveal reveal-delay-1">
+  <h3 class="form-title">Jetzt Kontakt aufnehmen.</h3>
+  <p class="form-subtitle">Wir antworten innerhalb von 24 Stunden.</p>
 
-          <form action="Platzhalter-für-Zoho-Integration" method="POST" id="contactForm" novalidate aria-label="Kontaktformular">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="firstName" class="form-label">Vorname *</label>
-                <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Max" required autocomplete="given-name" />
-              </div>
-              <div class="form-group">
-                <label for="lastName" class="form-label">Nachname *</label>
-                <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Mustermann" required autocomplete="family-name" />
-              </div>
-            </div>
+  <form action="https://forms.zohopublic.eu/kontaktbewise1/form/ContactUs/formperma/JLi0kM94q75uqHwls9datRK9S4j6zFGic1-3ITTBfGU/htmlRecords/submit" 
+        method="POST" 
+        id="contactForm" 
+        accept-charset="UTF-8" 
+        enctype="multipart/form-data" 
+        novalidate 
+        aria-label="Kontaktformular">
+    
+    <input type="hidden" name="zf_referrer_name" value="">
+    <input type="hidden" name="zf_redirect_url" value="">
+    <input type="hidden" name="zc_gad" value="">
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email" class="form-label">E-Mail *</label>
-                <input type="email" id="email" name="email" class="form-input" placeholder="max@muster.de" required autocomplete="email" />
-              </div>
-              <div class="form-group">
-                <label for="phone" class="form-label">Telefon</label>
-                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+49 40 ..." autocomplete="tel" />
-              </div>
-            </div>
+    <div class="form-group full">
+      <label for="salutation" class="form-label">Anrede *</label>
+      <select id="salutation" name="Name_Salutation" class="form-select" fieldType="7" required>
+        <option value="-Select-" disabled selected>-Auswählen-</option>
+        <option value="Herr">Herr</option>
+        <option value="Frau">Frau</option>
+        <option value="Divers">Divers</option>
+      </select>
+    </div>
 
-            <div class="form-group full">
-              <label for="interest" class="form-label">Ich bin *</label>
-              <select id="interest" name="interest" class="form-select" required>
-                <option value="" disabled selected>Bitte wählen …</option>
-                <option value="unternehmen">Unternehmen / Recruiter</option>
-                <option value="bewerber">Bewerber / Kandidat</option>
-                <option value="beides">Beides</option>
-                <option value="sonstiges">Sonstiges</option>
-              </select>
-            </div>
-
-            <div class="form-group full">
-              <label for="message" class="form-label">Ihre Nachricht *</label>
-              <textarea id="message" name="message" class="form-textarea" placeholder="Wie können wir Ihnen helfen?" required></textarea>
-            </div>
-
-            <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
-            <input type="hidden" name="_subject" value="Neue Kontaktanfrage – Bewise Recruiting" />
-
-            <p class="form-privacy">
-              Mit dem Absenden stimmen Sie zu, dass Ihre Daten zur Bearbeitung Ihrer Anfrage gemäß unserer
-              <a href="datenschutz.html">Datenschutzerklärung</a> verarbeitet werden. Sie akzeptieren die Verarbeitung durch Zoho Recruit gemäß Art. 6 Abs. 1 lit. b DSGVO.
-            </p>
-
-            <button type="submit" class="btn btn-dark" style="width:100%; justify-content:center;">
-              Nachricht senden <span class="arrow" aria-hidden="true">→</span>
-            </button>
-          </form>
-        </div>
-
+    <div class="form-row">
+      <div class="form-group">
+        <label for="firstName" class="form-label">Vorname *</label>
+        <input type="text" id="firstName" name="Name_First" class="form-input" placeholder="Max" maxlength="255" fieldType="7" required autocomplete="given-name" />
       </div>
-    </section>
-  </main>
+      <div class="form-group">
+        <label for="lastName" class="form-label">Nachname *</label>
+        <input type="text" id="lastName" name="Name_Last" class="form-input" placeholder="Mustermann" maxlength="255" fieldType="7" required autocomplete="family-name" />
+      </div>
+    </div>
 
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email" class="form-label">E-Mail *</label>
+        <input type="email" id="email" name="Email" class="form-input" placeholder="max@muster.de" maxlength="255" fieldType="9" required autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label for="phone" class="form-label">Telefon</label>
+        <input type="tel" id="phone" name="phone" class="form-input" placeholder="+49 40 ..." autocomplete="tel" />
+      </div>
+    </div>
+
+    <div class="form-group full">
+      <label for="interest" class="form-label">Ich bin *</label>
+      <select id="interest" name="interest" class="form-select" required>
+        <option value="" disabled selected>Bitte wählen …</option>
+        <option value="unternehmen">Unternehmen / Recruiter</option>
+        <option value="bewerber">Bewerber / Kandidat</option>
+        <option value="beides">Beides</option>
+        <option value="sonstiges">Sonstiges</option>
+      </select>
+    </div>
+
+    <div class="form-group full">
+      <label for="fileUpload" class="form-label">Anschreiben, Lebenslauf, Zeugnisse und Zertifikate hier hochladen</label>
+      <input type="file" id="fileUpload" name="FileUpload" class="form-input" checktype="c1" multiple="multiple" style="padding: 10px;" />
+      <p class="form-subtitle" style="font-size: 0.85rem; margin-top: 5px;">Wählen Sie die Dateien durch einfaches Klicken aus.</p>
+    </div>
+
+    <div class="form-group full">
+      <label for="message" class="form-label">Ihre Nachricht *</label>
+      <textarea id="message" name="MultiLine" class="form-textarea" placeholder="Wie können wir Ihnen helfen?" maxlength="65535" required></textarea>
+    </div>
+
+    <p class="form-privacy">
+      Mit dem Absenden stimmen Sie zu, dass Ihre Daten zur Bearbeitung Ihrer Anfrage gemäß unserer
+      <a href="datenschutz.html">Datenschutzerklärung</a> verarbeitet werden. Sie akzeptieren die Verarbeitung durch Zoho gemäß Art. 6 Abs. 1 lit. b DSGVO.
+    </p>
+
+    <button type="submit" class="btn btn-dark" style="width:100%; justify-content:center;">
+      Nachricht senden <span class="arrow" aria-hidden="true">→</span>
+    </button>
+  </form>
+</div>
+        
   <!-- ═══════════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════════════ -->
