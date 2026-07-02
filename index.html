@@ -2688,25 +2688,27 @@ footer, .footer {
           </div>
         </div>
 
-<section id="contact" class="contact-section" style="position: relative; padding-bottom: 60px;">
+<section id="contact" class="contact-section" style="position: relative; padding-bottom: 80px;">
   <div class="container">
     <div class="kontakt-form reveal reveal-delay-1">
       <h3 class="form-title">Jetzt Kontakt aufnehmen.</h3>
       <p class="form-subtitle">Wir antworten innerhalb von 24 Stunden.</p>
 
-      <form action="https://forms.zohopublic.eu/kontaktbewise1/form/ContactUs/formperma/JLi0kM94q75uqHwls9datRK9S4j6zFGic1-3ITTBfGU/htmlRecords/submit" 
-            method="POST" 
-            name="form" 
-            id="zohoKontaktForm" 
-            accept-charset="UTF-8" 
-            enctype="multipart/form-data">
+      <form action='https://forms.zohopublic.eu/kontaktbewise1/form/ContactUs/formperma/JLi0kM94q75uqHwls9datRK9S4j6zFGic1-3ITTBfGU/htmlRecords/submit' 
+            name='form' 
+            id='form' 
+            method='POST' 
+            accept-charset='UTF-8' 
+            enctype='multipart/form-data' 
+            onSubmit='javascript:document.charset="UTF-8"; return zf_ValidateAndSubmit();'>
         
         <input type="hidden" name="zf_referrer_name" value="">
-        <input type="hidden" name="zc_gad" value="">
-        <input type="hidden" name="zf_redirect_url" value=""> <div class="form-group full">
+        <input type="hidden" name="zf_redirect_url" value=""> <input type="hidden" name="zc_gad" value="">
+      
+        <div class="form-group full">
           <label for="salutation" class="form-label">Anrede *</label>
           <select id="salutation" name="Name_Salutation" class="form-select" fieldType="7" required>
-            <option value="" disabled selected>-Auswählen-</option>
+            <option value="-Select-" disabled selected>-Auswählen-</option>
             <option value="Herr">Herr</option>
             <option value="Frau">Frau</option>
             <option value="Divers">Divers</option>
@@ -2731,13 +2733,13 @@ footer, .footer {
           </div>
           <div class="form-group">
             <label for="phone" class="form-label">Telefon</label>
-            <input type="tel" id="phone" name="PhoneNumber_countrycode" class="form-input" placeholder="+49 40 ..." maxlength="20" fieldType="11" autocomplete="tel" />
+            <input type="tel" id="phone" name="phone_local" class="form-input" placeholder="+49 40 ..." autocomplete="tel" />
           </div>
         </div>
 
         <div class="form-group full">
           <label for="interest" class="form-label">Ich bin *</label>
-          <select id="interest" name="interest" class="form-select" required>
+          <select id="interest" name="interest_local" class="form-select" required>
             <option value="" disabled selected>Bitte wählen …</option>
             <option value="unternehmen">Unternehmen / Recruiter</option>
             <option value="bewerber">Bewerber / Kandidat</option>
@@ -2773,6 +2775,27 @@ footer, .footer {
     </div>
   </div>
 </section>
+
+<script type="text/javascript">
+  var zf_MandArray = ["Name_First", "Name_Last", "Email", "MultiLine"];
+  
+  function zf_ValidateAndSubmit() {
+    for (var i = 0; i < zf_MandArray.length; i++) {
+      var fieldObj = document.forms.form[zf_MandArray[i]];
+      if (fieldObj && (fieldObj.value.replace(/^\s+|\s+$/g, '')).length == 0) {
+        fieldObj.focus();
+        alert("Bitte füllen Sie alle Pflichtfelder aus.");
+        return false;
+      }
+    }
+    // Lokale Checkbox-Validierung für DSGVO vor dem Absenden
+    if (!document.getElementById('privacyAccept').checked) {
+      alert("Bitte akzeptieren Sie die Datenschutzerklärung.");
+      return false;
+    }
+    return true;
+  }
+</script>
         
   <!-- ═══════════════════════════════════════════════
        FOOTER
